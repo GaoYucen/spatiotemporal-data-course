@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="东北大学《时空数据分析与挖掘》课程材料、课堂演示和可复现实验。">
+  <title>时空数据分析与挖掘</title>
+  <link rel="stylesheet" href="assets/course.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header><nav class="wrap bar" aria-label="课程导航">
+    <a class="brand" href="index.html">时空数据分析与挖掘</a>
+    <a href="index.html#syllabus">逐讲目录</a>
+  </nav></header>
+  <main id="main">
+    <div class="hero"><div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">东北大学 · 课程学习资料</p>
+        <h1>时空数据分析与挖掘</h1>
+        <p class="lead">从带有时间与位置的原始记录出发，学习数据表示、模式发现、预测与应用。</p>
+        <a class="button" href="#syllabus">查看 16 讲目录</a>
+      </div>
+      <svg class="trajectory" viewBox="0 0 360 174" role="img" aria-labelledby="traj-title">
+        <title id="traj-title">轨迹示意图，依次连接三个观测时刻，断流后另起一段</title>
+        <path d="M22 26H338M22 64H338M22 102H338M22 140H338M60 12V153M122 12V153M184 12V153M246 12V153M308 12V153" stroke="#c6d7e5"/>
+        <path d="M47 125L107 94L172 104M253 59L313 43" fill="none" stroke="#23618c" stroke-width="3"/>
+        <path d="M172 104L253 59" fill="none" stroke="#52798b" stroke-width="2" stroke-dasharray="5 5"/>
+        <g fill="#066a61" stroke="#e8f0f7" stroke-width="2">
+          <circle cx="47" cy="125" r="6"/><circle cx="107" cy="94" r="6"/><circle cx="172" cy="104" r="6"/>
+          <circle cx="253" cy="59" r="6"/><circle cx="313" cy="43" r="6"/>
+        </g>
+        <g fill="#29465b" font-size="12"><text x="37" y="151">观测</text><text x="187" y="70">时间间隔</text><text x="277" y="26">新片段</text></g>
+      </svg>
+    </div></div>
+    <div class="wrap content">
+      <section aria-labelledby="updates">
+        <div class="release">
+          <p class="eyebrow"><time datetime="2026-11-06">2026 年 11 月 6 日</time></p>
+          <h2 id="updates">最新更新</h2>
+          <p>第 1、2 讲的学生版课件、在线演示和 Python 实验包已整理到课程页。</p>
+        </div>
+        <div class="cards">
+        <article class="card">
+          <p class="eyebrow">第 01 讲</p>
+          <h3><a href="lectures/01/index.html">课程导论与时空数据基础</a></h3>
+          <p>从借还记录出发，区分描述、预测与决策，并检验统计口径和基线。</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">第 02 讲</p>
+          <h3><a href="lectures/02/index.html">时空数据表示与预处理</a></h3>
+          <p>用 12 条 GPS 记录练习排序、去重、跳点过滤和轨迹分段。</p>
+        </article>
+        </div>
+      </section>
+      <section id="syllabus" aria-labelledby="directory-title">
+        <h2 id="directory-title">逐讲目录</h2>
+        <p class="lead">按讲次查找课件与实验。后续材料随课程进度更新。</p>
+        <ol class="toc" role="list">
+        <li><span class="num">01</span><a href="lectures/01/index.html">课程导论与时空数据基础</a><span class="status ready">可学习</span></li>
+        <li><span class="num">02</span><a href="lectures/02/index.html">时空数据表示与预处理</a><span class="status ready">可学习</span></li>
+        <li><span class="num">03</span><span>时空关联规则挖掘</span><span class="status">待发布</span></li>
+        <li><span class="num">04</span><span>时空聚类算法</span><span class="status">待发布</span></li>
+        <li><span class="num">05</span><span>时空异常检测</span><span class="status">待发布</span></li>
+        <li><span class="num">06</span><span>预测模型基础</span><span class="status">待发布</span></li>
+        <li><span class="num">07</span><span>图神经网络与时空数据</span><span class="status">待发布</span></li>
+        <li><span class="num">08</span><span>强化学习与时空优化</span><span class="status">待发布</span></li>
+        <li><span class="num">09</span><span>在线学习与优化</span><span class="status">待发布</span></li>
+        <li><span class="num">10</span><span>多源时空数据融合</span><span class="status">待发布</span></li>
+        <li><span class="num">11</span><span>智能交通应用</span><span class="status">待发布</span></li>
+        <li><span class="num">12</span><span>工业制造应用</span><span class="status">待发布</span></li>
+        <li><span class="num">13</span><span>推荐系统中的时空数据</span><span class="status">待发布</span></li>
+        <li><span class="num">14</span><span>城市管理应用</span><span class="status">待发布</span></li>
+        <li><span class="num">15</span><span>课程项目汇报</span><span class="status">待发布</span></li>
+        <li><span class="num">16</span><span>前沿技术与课程总结</span><span class="status">待发布</span></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">东北大学 · 时空数据分析与挖掘</div></footer>
+</body>
+</html>

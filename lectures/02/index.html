@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="东北大学《时空数据分析与挖掘》课程材料、课堂演示和可复现实验。">
+  <title>第 2 讲 · 时空数据表示与预处理</title>
+  <link rel="stylesheet" href="../../assets/course.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header><nav class="wrap bar" aria-label="课程导航">
+    <a class="brand" href="../../index.html">时空数据分析与挖掘</a>
+    <a href="../../index.html#syllabus">逐讲目录</a>
+  </nav></header>
+  <main id="main">
+    <div class="hero"><div class="wrap">
+      <p class="eyebrow">第 02 讲 · 学生学习材料</p>
+      <h1>时空数据表示与预处理</h1>
+      <p class="lead">沿着同一辆车的 12 条模拟 GPS 记录，逐步核对乱序、重复、跳点和观测空档。处理结果是 10 个保留点和 2 个轨迹片段。</p>
+    </div></div>
+    <div class="wrap content">
+      <section>
+        <h2>本讲学习路线</h2>
+        <ol class="steps">
+          <li>查看对象编号、观测时间和米制坐标，再按观测时间排序。</li>
+          <li>识别重复记录，按案例设定的 12 m/s 阈值检查跳点。</li>
+          <li>对超过 120 秒的观测间隔分段，讨论插值能补充什么信息。</li>
+        </ol>
+      </section>
+      <section>
+        <h2>课件与实验</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>学生版课件</h3>
+            <p>v5 GPS 主线学生公开版 · PDF · 55 页</p>
+            <div class="actions"><a class="button" href="slides.pdf">阅读课件</a><a href="slides.pdf" download="lecture-02-slides.pdf">下载 PDF</a></div>
+          </article>
+          <article class="card">
+            <h3>扩展实验 · 算法实验台 v6</h3>
+            <p>实验台沿用 v4 课件的简单用例，覆盖清洗、插值、地图匹配和简化等方法。复杂实例使用另外生成的合成数据。复习 v5 的 12 条 GPS 主线时，请选「GPS 清洗」的简单用例。</p>
+            <a class="button" href="demo.html">打开在线演示</a>
+          </article>
+          <article class="card">
+            <h3>Python 实验包</h3>
+            <p>实验包含算法 Notebook、12 条 GPS 记录 CSV 及 Python 脚本。从解压后的目录打开 Notebook，或运行 README 中的 GPS 命令。</p>
+            <a class="button" href="lab.zip" download="lecture-02-lab.zip">下载实验包 ZIP</a>
+          </article>
+        </div>
+      </section>
+
+      <section aria-label="讲次切换">
+        <div class="actions">
+          <a href="../../index.html#syllabus">返回逐讲目录</a>
+          <a href="../01/index.html">第 1 讲 · 课程导论与时空数据基础</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">东北大学 · 时空数据分析与挖掘</div></footer>
+</body>
+</html>

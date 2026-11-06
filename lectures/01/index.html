@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="东北大学《时空数据分析与挖掘》课程材料、课堂演示和可复现实验。">
+  <title>第 1 讲 · 课程导论与时空数据基础</title>
+  <link rel="stylesheet" href="../../assets/course.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header><nav class="wrap bar" aria-label="课程导航">
+    <a class="brand" href="../../index.html">时空数据分析与挖掘</a>
+    <a href="../../index.html#syllabus">逐讲目录</a>
+  </nav></header>
+  <main id="main">
+    <div class="hero"><div class="wrap">
+      <p class="eyebrow">第 01 讲 · 学生学习材料</p>
+      <h1>课程导论与时空数据基础</h1>
+      <p class="lead">以校园单车为例，看看一条借还记录能回答什么问题。再比较不同时间窗口下的活动强度，以及简单预测怎样影响补车决策。</p>
+    </div></div>
+    <div class="wrap content">
+      <section>
+        <h2>本讲学习路线</h2>
+        <ol class="steps">
+          <li>从一行借还记录中识别对象、时间、位置和属性。</li>
+          <li>改变时间窗口，观察计数与每小时速率的区别。</li>
+          <li>先确定预测时点，再比较可用输入、历史基线和补车约束。</li>
+        </ol>
+      </section>
+      <section>
+        <h2>课件与实验</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>学生版课件</h3>
+            <p>v2 学生公开版 · PDF · 34 页</p>
+            <div class="actions"><a class="button" href="slides.pdf">阅读课件</a><a href="slides.pdf" download="lecture-01-slides.pdf">下载 PDF</a></div>
+          </article>
+          <article class="card">
+            <h3>校园单车互动演示</h3>
+            <p>演示采用合成数据，覆盖数据表示、时空回放、异常候选、基线预测与补车。它与课件中的小案例使用不同规模的数据。</p>
+            <a class="button" href="demo.html">打开在线演示</a>
+          </article>
+          <article class="card">
+            <h3>Python 实验包</h3>
+            <p>实验包含增强版 Notebook、合成借还 CSV 和生成脚本。解压后从实验目录打开 Notebook，按顺序运行。</p>
+            <a class="button" href="lab.zip" download="lecture-01-lab.zip">下载实验包 ZIP</a>
+          </article>
+        </div>
+      </section>
+      <section>
+        <h2>课堂示例来源</h2>
+        <p>公开版课件移除了原第 11–13 页的媒体示例和第 21 页的真实骑行记录样例。可在原始页面继续查看相关资料。</p>
+        <ul class="steps">
+          <li><a href="https://svs.gsfc.nasa.gov/3827/">NASA SVS 海流可视化</a></li>
+          <li><a href="https://deck.gl/examples/trips-layer">deck.gl 轨迹回放示例</a></li>
+          <li><a href="https://svs.gsfc.nasa.gov/5110/">NASA SVS 二氧化碳输送可视化</a></li>
+          <li><a href="https://citibikenyc.com/system-data">Citi Bike 系统数据</a></li>
+        </ul>
+      </section>
+      <section aria-label="讲次切换">
+        <div class="actions">
+          <a href="../../index.html#syllabus">返回逐讲目录</a>
+          <a href="../02/index.html">第 2 讲 · 时空数据表示与预处理</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">东北大学 · 时空数据分析与挖掘</div></footer>
+</body>
+</html>

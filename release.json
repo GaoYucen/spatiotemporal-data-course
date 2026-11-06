@@ -1,0 +1,100 @@
+{
+  "course": "时空数据分析与挖掘",
+  "updated": "2026-11-06",
+  "lectures": [
+    {
+      "number": 1,
+      "title": "课程导论与时空数据基础",
+      "status": "published",
+      "page": "lectures/01/index.html",
+      "slides": "lectures/01/slides.pdf",
+      "slides_version": "v2 学生公开版",
+      "demo": "lectures/01/demo.html",
+      "demo_title": "校园单车互动演示",
+      "lab": "lectures/01/lab.zip",
+      "slides_pages": 34
+    },
+    {
+      "number": 2,
+      "title": "时空数据表示与预处理",
+      "status": "published",
+      "page": "lectures/02/index.html",
+      "slides": "lectures/02/slides.pdf",
+      "slides_version": "v5 GPS 主线学生公开版",
+      "demo": "lectures/02/demo.html",
+      "demo_title": "时空数据算法实验台 v6",
+      "lab": "lectures/02/lab.zip",
+      "slides_pages": 55
+    },
+    {
+      "number": 3,
+      "title": "时空关联规则挖掘",
+      "status": "pending"
+    },
+    {
+      "number": 4,
+      "title": "时空聚类算法",
+      "status": "pending"
+    },
+    {
+      "number": 5,
+      "title": "时空异常检测",
+      "status": "pending"
+    },
+    {
+      "number": 6,
+      "title": "预测模型基础",
+      "status": "pending"
+    },
+    {
+      "number": 7,
+      "title": "图神经网络与时空数据",
+      "status": "pending"
+    },
+    {
+      "number": 8,
+      "title": "强化学习与时空优化",
+      "status": "pending"
+    },
+    {
+      "number": 9,
+      "title": "在线学习与优化",
+      "status": "pending"
+    },
+    {
+      "number": 10,
+      "title": "多源时空数据融合",
+      "status": "pending"
+    },
+    {
+      "number": 11,
+      "title": "智能交通应用",
+      "status": "pending"
+    },
+    {
+      "number": 12,
+      "title": "工业制造应用",
+      "status": "pending"
+    },
+    {
+      "number": 13,
+      "title": "推荐系统中的时空数据",
+      "status": "pending"
+    },
+    {
+      "number": 14,
+      "title": "城市管理应用",
+      "status": "pending"
+    },
+    {
+      "number": 15,
+      "title": "课程项目汇报",
+      "status": "pending"
+    },
+    {
+      "number": 16,
+      "title": "前沿技术与课程总结",
+      "status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,839 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>时空数据 · 算法实验台</title><style>*{box-sizing:border-box} :root{--bg:#09121d;--panel:#111f2e;--stage:#0c1826;--ink:#eaf1f8;--muted:#96abbe;--line:#293d51;--accent:#52dfcb;--blue:#65a7ff;--orange:#ffbe6b;--red:#ff758b}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,sans-serif}body.light{--bg:#eaf0f5;--panel:#fff;--stage:#f5f8fb;--ink:#183046;--muted:#4d657a;--line:#cbd9e4;--accent:#007c6c;--blue:#286cc2;--orange:#ad6300;--red:#bb3049}aside{position:fixed;inset:0 auto 0 0;width:236px;padding:26px 18px;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column}.brand{display:flex;gap:12px;align-items:center;font-weight:750;font-size:19px}.brand small{display:block;font:9px/2 system-ui;letter-spacing:1.2px;color:var(--muted)}.mark{border:1px solid var(--accent);color:var(--accent);padding:7px;border-radius:10px}.navlabel,.label{font-size:11px;letter-spacing:1.5px;color:var(--muted);font-weight:700}.navlabel{margin:35px 10px 14px}nav{display:grid;gap:5px}nav button{text-align:left;background:transparent;border:0;color:var(--muted);padding:11px 13px;font-size:15px}nav button.active{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);box-shadow:inset 3px 0 var(--accent)}nav button small{display:inline-block;width:26px;opacity:.6}footer{font-size:12px;color:var(--muted);margin-top:auto;padding:20px 10px 0}main{margin-left:236px;padding:28px 32px;max-width:1800px}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}#eyebrow{font-size:11px;color:var(--accent);letter-spacing:2px}h1{font-size:30px;margin:5px 0;font-weight:650;letter-spacing:-.5px}.actions{display:flex;gap:8px}button{font:inherit;font-size:14px;cursor:pointer;color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:8px 13px;border-radius:7px;transition:background .2s,border .2s}button:hover{border-color:var(--accent)}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}button:disabled{opacity:.35;cursor:default}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px}article,.theory{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden}.stagehead{display:flex;justify-content:space-between;padding:17px 22px;font-size:12px;color:var(--muted)}.live{color:var(--accent);font-size:10px;letter-spacing:1.4px}#stage{background:var(--stage);padding:0 12px;min-height:330px}svg{display:block;width:100%;height:auto;aspect-ratio:850/380}svg text{font:16px system-ui;fill:var(--muted)}svg .big{font-size:25px;fill:var(--ink);font-weight:650}svg .tiny{font-size:12px}svg .accent{fill:var(--accent)}svg .node{stroke:var(--stage);stroke-width:3}svg .pulse{animation:pulse 1.8s ease-in-out infinite}svg .trace{stroke-dasharray:1200;animation:draw 1s ease-out both}svg .fade{animation:fade .5s ease-out both}.metrics{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.metric{flex:1;padding:13px 20px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric small{display:block;color:var(--muted);font-size:11px}.metric strong{color:var(--accent);font-size:23px;font-weight:600}#controls{display:flex;flex-wrap:wrap;gap:14px;padding:17px 22px;align-items:center;min-height:70px}label{font-size:13px;color:var(--muted)}label output{color:var(--ink);font-weight:700;margin-left:8px}input[type=range]{display:block;accent-color:var(--accent);width:165px;margin:9px 0 0}select{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:7px;border-radius:6px}.transport{display:flex;gap:7px;align-items:center;padding:0 22px 16px}#play{background:var(--accent);color:var(--bg);font-weight:700}#stepLabel{margin-left:auto;color:var(--muted);font-size:12px}.steps{display:flex;gap:5px;padding:0 22px 20px}.steps button{flex:1;height:5px;padding:0;border:0;background:var(--line);border-radius:10px}.steps button.done{background:var(--accent)}.theory{padding:24px}.theory p{font-size:15px;margin:10px 0 24px}.formula{font:21px/1.8 'Times New Roman',serif;padding:15px 0;color:var(--accent);overflow-wrap:anywhere}.symbols{font-size:12px;color:var(--muted);margin-bottom:24px}.calculation{font-size:15px;line-height:1.9;margin:12px 0 25px;font-variant-numeric:tabular-nums}.boundary{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--orange)}.boundary p{font-size:12px;margin:8px 0}.narration{display:flex;gap:20px;padding:22px 4px}#stepNum{color:var(--accent);font-size:28px;font-weight:300}#stepTitle{font-size:18px}.narration p{color:var(--muted);margin:6px 0;font-size:15px}details{border-top:1px solid var(--line);padding:16px 0;color:var(--muted);font-size:13px}pre{max-height:280px;overflow:auto;font-size:12px;white-space:pre-wrap}@keyframes draw{from{stroke-dashoffset:1200}to{stroke-dashoffset:0}}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{50%{opacity:.5}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}@media(max-width:1200px){aside{width:200px}main{margin-left:200px;padding:22px}.workspace{grid-template-columns:minmax(0,1fr) 290px}.theory{padding:18px}.formula{font-size:19px}#stage{min-height:260px}h1{font-size:25px}.transport{flex-wrap:wrap}}@media(max-width:900px){aside{position:static;width:auto;padding:15px}nav{display:flex;overflow:auto}nav button{white-space:nowrap}.navlabel,footer{display:none}main{margin:0;padding:16px}.workspace{grid-template-columns:1fr}header{flex-wrap:wrap}#stage{min-height:0}.theory{display:grid;grid-template-columns:1fr}.brand{margin-bottom:10px}}@media(min-width:901px) and (max-width:1100px){.workspace{grid-template-columns:1fr}.theory{display:grid;grid-template-columns:1fr 1fr;column-gap:30px}.theory .label,.theory .formula,.theory .symbols,.theory .calculation,.theory .boundary,.theory p{grid-column:1/-1}.theory p{margin-bottom:12px}#stage{min-height:320px}}
+[hidden]{display:none!important}.metrics .metric strong{font-size:19px}.steps{flex-wrap:wrap}.steps button{min-width:9px;max-width:55px;height:9px}.trace-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin:0 0 20px}.trace-state,.code-panel{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}h2{font-size:20px;margin:0 0 12px}.hint{font-size:12px;color:var(--muted);margin:8px 0 14px}.table-scroll{overflow:auto}.trace-table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}.trace-table th{background:var(--stage);color:var(--accent);font-weight:600}.trace-table td,.trace-table th{text-align:left;padding:10px 8px;border:1px solid var(--line);white-space:nowrap}#trace-code{position:relative;overflow:auto;max-height:440px;background:var(--stage);border-radius:8px;padding:12px 0;font:12px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace;tab-size:4}.code-line{display:flex;min-width:max-content;padding-right:15px;white-space:pre}.code-line span{color:var(--muted);text-align:right;width:40px;padding-right:12px;flex-shrink:0;user-select:none}.code-line code{font:inherit}.code-line.highlight{background:color-mix(in srgb,var(--accent) 16%,transparent);box-shadow:inset 3px 0 var(--accent)}.code-actions{display:flex;gap:8px;flex-wrap:wrap}#run-command{font-size:12px;color:var(--accent);padding:12px;background:var(--stage);overflow-wrap:anywhere}#trace-history{display:flex;flex-wrap:wrap;gap:6px;max-height:230px;overflow:auto;padding-top:10px}#trace-history button{font-size:12px;padding:5px 8px}#trace-history button.active{border-color:var(--accent);color:var(--accent)}.prediction{border:1px solid var(--orange);border-radius:10px;padding:18px;margin-bottom:18px;background:var(--panel)}.prediction strong{color:var(--orange)}.prediction p{font-size:14px}#trace-comparison pre{max-height:200px;background:var(--stage);padding:10px}#trace-tools{display:inline-flex;gap:7px}.transport{flex-wrap:wrap}#calculation{font-variant-numeric:tabular-nums}.trace-state details{margin-top:15px}.trace-table tr:last-child{border-bottom:2px solid var(--accent)}@media(max-width:1200px){.trace-layout{grid-template-columns:1fr}#trace-code{max-height:360px}}@media(min-width:1600px){body{font-size:18px}.trace-table{font-size:15px}#trace-code{font-size:14px}}
+body.process-view .workspace{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}body.process-view .theory>:not(.code-panel){display:none}body.process-view .theory{padding:18px}body.process-view .theory .code-panel{border:0;padding:0;border-radius:0}body.process-view .trace-state{margin:0 16px 18px;padding:14px}body.process-view .trace-state .table-scroll{max-height:235px}body.process-view .trace-state h2{font-size:17px}body.process-view #stage{min-height:0}body.process-view .narration{display:none}body.process-view .trace-state details{padding:10px 0;margin-top:6px}body.process-view #trace-code{max-height:470px}.inline-calc{font-size:14px!important;line-height:1.8;color:var(--accent);background:var(--stage);padding:12px;border-radius:6px;margin:0 0 12px!important;overflow-wrap:anywhere}body.process-view .actions{flex-wrap:wrap;justify-content:flex-end}.theory .code-panel .hint{font-size:12px;margin:8px 0 12px}body.process-view .prediction{margin:0 14px 10px}.code-line{min-width:0;white-space:normal;align-items:baseline}.code-line code{white-space:pre-wrap;overflow-wrap:anywhere;min-width:0}.code-line span{flex-shrink:0}body.process-view .stagehead{padding:12px 16px}body.process-view .metric{padding:10px 13px}body.process-view #controls{padding:12px 16px;min-height:60px}body.process-view .transport{padding:0 16px 12px}body.process-view .steps{padding:0 16px 14px}.table-scroll::-webkit-scrollbar,#trace-code::-webkit-scrollbar{height:7px;width:7px}.table-scroll::-webkit-scrollbar-thumb,#trace-code::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}@media(max-width:1100px){body.process-view .workspace{grid-template-columns:1fr}body.process-view #trace-code{max-height:400px}}@media(min-width:1201px) and (max-width:1500px){body.process-view aside{width:205px}body.process-view main{margin-left:205px;padding:20px}body.process-view h1{font-size:25px}body.process-view .metric strong{font-size:16px}}
+.trace-table tr.current-row td{background:color-mix(in srgb,var(--orange) 13%,transparent);color:var(--ink)}.brand{font-size:17px;gap:9px}.brand .mark{padding:6px}body.process-view .trace-state .table-scroll{position:relative}body.process-view .trace-table{font-size:12px}body.process-view .trace-table td,body.process-view .trace-table th{padding:9px 7px}
+.trace-table thead th{position:sticky;top:0;z-index:1}
+
+.case-picker,.phase-controls{display:none}
+body.classroom .case-picker{display:block;padding:0 20px 12px}
+.case-toggle,.phase-controls{display:flex;gap:8px;flex-wrap:wrap}
+.case-picker p{margin:10px 0 0;font-size:13px;color:var(--muted)}
+.case-toggle button[aria-pressed=true],.phase-controls button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:700}
+body.classroom .phase-controls{display:flex;padding:0 20px 17px}
+body.classroom .transport,body.classroom .steps{display:none}
+body.classroom #case-table .table-scroll{max-height:330px;overflow:auto}
+body.classroom .metric strong{font-size:clamp(14px,1.4vw,22px);overflow-wrap:anywhere}
+body.classroom .metric{min-width:0}
+</style></head><body><aside><div class="brand"><span class="mark">ST</span><div>时空数据实验台<small>SPATIOTEMPORAL LAB · V6</small></div></div><div class="navlabel">第二讲 / 方法与表示</div><nav id="nav"></nav><footer>本地离线 · 教学构造数据<br>课件v4 · 77页</footer></aside><main><header><div><span id="eyebrow"></span><h1 id="title"></h1></div><div class="actions"><button id="view-mode" onclick="toggleDetails()">展开简单用例逐步演算</button><button id="theme" onclick="document.body.classList.toggle('light')">明 / 暗</button><button id="fullscreen" onclick="full()">全屏</button><button onclick="exportData()">导出实验</button></div></header><div class="workspace"><article><div class="stagehead"><span class="live">● LIVE COMPUTATION</span><span id="page"></span></div><div class="case-picker"><div class="case-toggle" role="group" aria-label="数据实例"><button id="case-simple" onclick="setCase('simple')">简单用例</button><button id="case-complex" onclick="setCase('complex')">复杂实例</button></div><p id="case-note"></p></div><div id="stage" aria-live="polite"></div><div id="metrics" class="metrics"></div><div id="controls"></div><div class="transport"><button id="reset" onclick="reset()">↺ 重置</button><button id="prev" onclick="advance(-1)">← 上一步</button><button id="play" onclick="play()">▶ 播放</button><span id="trace-tools" hidden><button onclick="nextDecision()">运行到下一决策</button><button onclick="predictNext()">预测下一步</button></span><button id="next" onclick="advance(1)">下一步 →</button><span id="stepLabel"></span></div><div id="steps" class="steps"></div><div class="phase-controls"><button id="show-input" onclick="showPhase(0)">1 观察输入</button><button id="show-result" onclick="showPhase(1)">2 展示结果</button><button onclick="reset()">重置</button></div></article><section class="theory"><div class="label">定义 / DEFINITION</div><p id="definition"></p><div class="label">数学描述 / FORMULA</div><div id="formula" class="formula"></div><div id="symbols" class="symbols"></div><div id="reading-label" class="label" hidden>怎么看图</div><p id="reading-guide" hidden></p><div class="label">当前演算 / CALCULATION</div><div id="calculation" class="calculation"></div><div class="boundary"><b>适用条件与边界</b><p id="boundary"></p></div></section></div><div class="narration"><span id="stepNum"></span><div><b id="stepTitle"></b><p id="explanation"></p></div></div><section id="trace-panel" hidden>
+<div id="trace-question" class="prediction" hidden></div>
+<div class="trace-layout"><section class="trace-state"><h2>中间变量与决策表</h2><p class="hint">只显示已经执行的步骤；未计算项保留为 — 或 ?。</p><div id="trace-table"></div><details><summary>执行历史 · 点击回放</summary><div id="trace-history"></div></details><details><summary>参数修改前后对照</summary><div id="trace-comparison"></div></details></section>
+<section class="code-panel"><h2>对应 Python 代码</h2><p id="source-name" class="hint"></p><div id="trace-code" tabindex="0" aria-label="当前算法Python源代码"></div><p class="hint">emit 保存当前计算状态，对应网页一步。浏览器执行 JavaScript；Python 可独立运行核对。</p><div class="code-actions"><button onclick="downloadPython()">下载完整 Python</button><button onclick="downloadGPS()">下载配套 GPS 数据</button></div><pre id="run-command"></pre><p class="hint">GPS实验需将CSV放在脚本同目录的 data/gps_raw.csv。</p></section></div></section>
+<details id="case-results" hidden><summary>查看结果表</summary><div id="case-table"></div></details><details><summary>查看数据与处理结果</summary><pre id="data"></pre></details></main><script>const DATA={"raw": [{"object_id": "bike-07", "time": "08:00:00", "x_m": "100", "y_m": "120", "teaching_flag": "ok", "source_id": 1}, {"object_id": "bike-07", "time": "08:00:30", "x_m": "190", "y_m": "120", "teaching_flag": "ok", "source_id": 2}, {"object_id": "bike-07", "time": "08:01:00", "x_m": "280", "y_m": "130", "teaching_flag": "ok", "source_id": 3}, {"object_id": "bike-07", "time": "08:01:00", "x_m": "280", "y_m": "130", "teaching_flag": "duplicate", "source_id": 4}, {"object_id": "bike-07", "time": "08:01:30", "x_m": "370", "y_m": "140", "teaching_flag": "late_arrival", "source_id": 6}, {"object_id": "bike-07", "time": "08:02:00", "x_m": "460", "y_m": "150", "teaching_flag": "ok", "source_id": 5}, {"object_id": "bike-07", "time": "08:02:30", "x_m": "560", "y_m": "160", "teaching_flag": "ok", "source_id": 7}, {"object_id": "bike-07", "time": "08:03:00", "x_m": "1240", "y_m": "910", "teaching_flag": "jump", "source_id": 8}, {"object_id": "bike-07", "time": "08:03:30", "x_m": "720", "y_m": "180", "teaching_flag": "ok", "source_id": 9}, {"object_id": "bike-07", "time": "08:04:00", "x_m": "800", "y_m": "200", "teaching_flag": "ok", "source_id": 10}, {"object_id": "bike-07", "time": "08:07:00", "x_m": "930", "y_m": "240", "teaching_flag": "gap_after", "source_id": 11}, {"object_id": "bike-07", "time": "08:07:30", "x_m": "980", "y_m": "250", "teaching_flag": "ok", "source_id": 12}], "duplicates": [{"object_id": "bike-07", "time": "08:01:00", "x_m": "280", "y_m": "130", "teaching_flag": "duplicate", "source_id": 4, "status": "重复", "reason": "对象、时间、坐标完全一致"}], "clean": [{"object_id": "bike-07", "time": "08:00:00", "x_m": "100", "y_m": "120", "teaching_flag": "ok", "source_id": 1, "status": "保留", "reason": "通过速度规则", "speed_mps": 0, "gap_s": null, "segment": 1}, {"object_id": "bike-07", "time": "08:00:30", "x_m": "190", "y_m": "120", "teaching_flag": "ok", "source_id": 2, "status": "保留", "reason": "通过速度规则", "speed_mps": 3.0, "gap_s": 30, "segment": 1}, {"object_id": "bike-07", "time": "08:01:00", "x_m": "280", "y_m": "130", "teaching_flag": "ok", "source_id": 3, "status": "保留", "reason": "通过速度规则", "speed_mps": 3.018, "gap_s": 30, "segment": 1}, {"object_id": "bike-07", "time": "08:01:30", "x_m": "370", "y_m": "140", "teaching_flag": "late_arrival", "source_id": 6, "status": "保留", "reason": "通过速度规则", "speed_mps": 3.018, "gap_s": 30, "segment": 1}, {"object_id": "bike-07", "time": "08:02:00", "x_m": "460", "y_m": "150", "teaching_flag": "ok", "source_id": 5, "status": "保留", "reason": "通过速度规则", "speed_mps": 3.018, "gap_s": 30, "segment": 1}, {"object_id": "bike-07", "time": "08:02:30", "x_m": "560", "y_m": "160", "teaching_flag": "ok", "source_id": 7, "status": "保留", "reason": "通过速度规则", "speed_mps": 3.35, "gap_s": 30, "segment": 1}, {"object_id": "bike-07", "time": "08:03:30", "x_m": "720", "y_m": "180", "teaching_flag": "ok", "source_id": 9, "status": "保留", "reason": "通过速度规则", "speed_mps": 2.687, "gap_s": 60, "segment": 1}, {"object_id": "bike-07", "time": "08:04:00", "x_m": "800", "y_m": "200", "teaching_flag": "ok", "source_id": 10, "status": "保留", "reason": "通过速度规则", "speed_mps": 2.749, "gap_s": 30, "segment": 1}, {"object_id": "bike-07", "time": "08:07:00", "x_m": "930", "y_m": "240", "teaching_flag": "gap_after", "source_id": 11, "status": "保留", "reason": "通过速度规则", "speed_mps": 0.756, "gap_s": 180, "segment": 2}, {"object_id": "bike-07", "time": "08:07:30", "x_m": "980", "y_m": "250", "teaching_flag": "ok", "source_id": 12, "status": "保留", "reason": "通过速度规则", "speed_mps": 1.7, "gap_s": 30, "segment": 2}], "rejected": [{"object_id": "bike-07", "time": "08:03:00", "x_m": "1240", "y_m": "910", "teaching_flag": "jump", "source_id": 8, "status": "拒绝", "reason": "速度超阈值或时间冲突", "speed_mps": 33.746}], "speed": 12, "gap": 120};</script><script>'use strict';
+const $=id=>document.getElementById(id), C={a:'var(--accent)',b:'var(--blue)',o:'var(--orange)',r:'var(--red)',m:'var(--muted)',l:'var(--line)'};
+const f=(v,n=2)=>Number.isFinite(v)?Number(v.toFixed(n)).toString():'未定义';
+const text=(x,y,t,cls='',color='')=>`<text x="${x}" y="${y}" class="${cls}" ${color?`style="fill:${color}"`:''}>${t}</text>`;
+const line=(x,y,u,v,c=C.l,dash='',width=2,cls='')=>`<line x1="${x}" y1="${y}" x2="${u}" y2="${v}" stroke="${c}" stroke-width="${width}" stroke-dasharray="${dash}" class="${cls}"/>`;
+const circle=(x,y,r,c,cls='')=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" class="node ${cls}"/>`;
+const rect=(x,y,w,h,c,opacity=1)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${c}" opacity="${opacity}"/>`;
+const poly=(pts,c=C.a,dash='',width=3)=>`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="${c}" stroke-width="${width}" stroke-dasharray="${dash}" class="trace"/>`;
+const svg=body=>`<svg viewBox="0 0 850 380" role="img" aria-label="${LABS[active].title}的当前计算图">${body}</svg>`;
+const gridBg=()=>Array.from({length:9},(_,i)=>line(70+i*85,35,70+i*85,335)).join('')+Array.from({length:5},(_,i)=>line(70,45+i*65,800,45+i*65)).join('');
+const range=(key,name,min,max,step)=>`<label>${name}<output id="out-${key}">${p[key]}</output><input aria-label="${name}" type="range" min="${min}" max="${max}" step="${step}" value="${p[key]}" oninput="setParam('${key}',this.value)"></label>`;
+const choose=(key,name,opts)=>`<label>${name} <select aria-label="${name}" onchange="setParam('${key}',this.value)">${opts.map(([v,t])=>`<option value="${v}" ${p[key]===v?'selected':''}>${t}</option>`).join('')}</select></label>`;
+let active=0,step=0,p={},timer=null,result={};
+function sec(t){let a=t.split(':').map(Number);return a[0]*3600+a[1]*60+a[2]}
+function gps(speed,gap){let seen=new Set(),last={},segments={},clean=[],rejected=[],duplicates=[];for(let row of DATA.raw){let r={...row},key=[r.object_id,r.time,+r.x_m,+r.y_m].join('|');if(seen.has(key)){duplicates.push(r);continue}seen.add(key);let q=last[r.object_id],dt=q?sec(r.time)-sec(q.time):null,v=q?(dt>0?Math.hypot(r.x_m-q.x_m,r.y_m-q.y_m)/dt:Infinity):0;if(v>speed){rejected.push({...r,speed_mps:Number.isFinite(v)?v:null});continue}let segment=(segments[r.object_id]||1)+(q&&dt>gap?1:0);segments[r.object_id]=segment;r={...r,speed_mps:v,segment};clean.push(r);last[r.object_id]=r}return {clean,rejected,duplicates}}
+function simplify(points,epsilon){let events=[],keep=new Set([0,points.length-1]);function distance(pt,a,b){let dx=b[0]-a[0],dy=b[1]-a[1],t=(dx||dy)?Math.max(0,Math.min(1,((pt[0]-a[0])*dx+(pt[1]-a[1])*dy)/(dx*dx+dy*dy))):0;return Math.hypot(pt[0]-a[0]-t*dx,pt[1]-a[1]-t*dy)}function visit(a,b){if(b-a<=1)return;let ds=[];for(let i=a+1;i<b;i++)ds.push([i,distance(points[i],points[a],points[b])]);let [j,d]=ds.reduce((v,q)=>q[1]>v[1]?q:v);events.push({a,b,j,d,split:d>epsilon,distances:ds});if(d>epsilon){keep.add(j);visit(a,j);visit(j,b)}}visit(0,points.length-1);return {keep:[...keep].sort((a,b)=>a-b),events}}
+function match(cost){let E=[0,2],V=[[...E]],back=[[null,null]];for(let t=1;t<3;t++){let row=[],b=[];for(let j=0;j<2;j++){let candidates=V[t-1].map((v,i)=>v+((i===1&&j===1)?0:cost));let i=candidates[0]<=candidates[1]?0:1;row.push(E[j]+candidates[i]);b.push(i)}V.push(row);back.push(b)}let j=V[2][0]<=V[2][1]?0:1,path=[j];for(let t=2;t>0;t--){j=back[t][j];path.unshift(j)}return {V,back,path,cost:Math.min(...V[2])}}
+const LABS=[
+ {title:'缺失值：估计如何改变数据',short:'缺失与质量',pages:'11—16、20页',tag:'01 / DATA QUALITY',defaults:{method:'mean'},steps:['定位缺失','选择估计','比较分布'],definition:'缺失填补用已观测数据的统计量估计未知单元，并保留原本缺失的标记。',formula:'x̂<sub>ij</sub> = mean { x<sub>kj</sub> : k ∈ O<sub>j</sub> }',symbols:'Oⱼ：参考集中第j列已观测的记录索引。',boundary:'均值与中位数都不是缺失真值；极端值会拉动均值。整列缺失时无法由本列估计。',controls:()=>choose('method','填补方式',[['mean','均值'],['median','中位数']]),draw(){let estimate=p.method==='mean'?27.25:3.5,vals=[2,3,4,100,step?estimate:null],body=gridBg()+text(70,28,'原始值与估计值 · 同一数值尺度');body+=line(70,310,800,310);vals.forEach((v,i)=>{let x=110+i*140;body+=rect(x,310-(v||0)*2.35,65,(v||0)*2.35,i===4?C.o:C.b)+text(x+7,340,`x${i+1}`)+text(x,292-(v||0)*2.35,v===null?'?':f(v),i===4?'big':'');if(i===4)body+=text(x-15,368,v===null?'缺失单元':'填补估计','tiny',C.o)});return {body,metrics:[['缺失率','20%'],['估计值',step?f(estimate):'待判断'],['有效观测','4 / 5']],calc:`均值 = 109 / 4 = 27.25<br>中位数 = (3+4) / 2 = 3.5<br>当前使用：${p.method==='mean'?'均值':'中位数'}。`,explain:['第五条记录没有观测值。缺失不能自动解释为0。','橙色柱是估计：比较均值和中位数，观察极端值100的影响。','即使填补后无空值，统计分布和不确定性也已经变化。'][step],data:{observed:[2,3,4,100],estimate,missing_indicator:[0,0,0,0,1]}}}},
+ {title:'KNN：让近邻参与估计',short:'KNN 填补',pages:'17—19页',tag:'02 / NEAREST NEIGHBORS',defaults:{k:2,query:1},steps:['确定比较维度','计算距离','选择K个供体','汇总估计'],definition:'在已观测的可比较特征上寻找近邻，用具有有效待填补值的供体估计缺失单元。',formula:'d(q,r) = |A<sub>q</sub> − A<sub>r</sub>|<br>B̂<sub>q</sub> = (1/K) Σ<sub>r∈Nq</sub> B<sub>r</sub>',symbols:'A：比较特征；B：待填补特征；K：供体数量。等距时按记录编号排序。',boundary:'仅按A列计算距离；不等同于软件默认缺失距离。改变K不意味着一定更准确。',controls:()=>range('k','邻居数量 K',1,3,1)+range('query','查询 A',0,6,.1),draw(){let donors=[{id:1,a:0,b:10},{id:2,a:2,b:14},{id:3,a:6,b:40}].map(r=>({...r,d:Math.abs(p.query-r.a)})).sort((a,b)=>a.d-b.d||a.id-b.id),chosen=donors.slice(0,p.k),estimate=chosen.reduce((s,r)=>s+r.b,0)/p.k,xx=a=>100+a*105;let body=line(70,150,790,150)+text(70,45,'相似性只由 A 决定；下方 B 值不参与距离');donors.forEach(r=>{let on=step>=2&&chosen.includes(r);body+=circle(xx(r.a),150,on?14:9,on?C.a:C.b,on?'pulse':'')+text(xx(r.a)-20,195,`r${r.id}`)+text(xx(r.a)-35,225,`B=${r.b}`);if(step>=1)body+=line(xx(p.query),88,xx(r.a),138,on?C.a:C.l,'5 5')+text(xx(r.a)-30,265,`d=${f(r.d)}`)});body+=circle(xx(p.query),85,12,C.o)+text(xx(p.query)-28,65,`q: A=${f(p.query)}`,'',C.o)+text(95,330,step===3?`B̂ = (${chosen.map(r=>r.b).join(' + ')}) / ${p.k} = ${f(estimate)}`:'B = ?　先选供体，再揭晓估计','big',step===3?C.a:C.m);return {body,metrics:[['K',p.k],['供体',step>=2?chosen.map(r=>'r'+r.id).join(' · '):'待选择'],['B̂',step===3?f(estimate):'?']],calc:donors.map(r=>`d(q,r${r.id}) = |${f(p.query)}−${r.a}| = ${f(r.d)}`).join('<br>')+(step===3?`<br>B̂ = ${f(estimate)}`:''),explain:['查询记录的B缺失，因此只用A作为比较维度。','连线表示查询与各供体的距离，线长对应A差值。','绿色点是最近的K个供体；拖动查询位置，邻居随之变化。','有效供体等权平均。K=2时12；K=3时21.33。'][step],data:{donors,chosen,estimate}}}},
+ {title:'平滑与异常：保留信号，检查偏离',short:'平滑与异常',pages:'21—25页',tag:'03 / SIGNAL & OUTLIERS',defaults:{window:3,z:3},steps:['观察原始序列','后向窗口平滑','标记异常候选'],definition:'平滑利用局部观测抑制波动；异常检测用参考分布衡量偏离，输出需要核查的候选。',formula:'z̃<sub>t</sub> = (1/w) Σ<sub>h=0</sub><sup>w−1</sup> z<sub>t−h</sub><br>Z = (x−μ)/σ ;　|Z| &gt; τ',symbols:'w：后向窗口；μ=50、σ=5为独立异常算例的参考参数。',boundary:'平滑序列与异常参考算例相互独立。尖峰可能是真实事件；异常规则不自动授权删除。',controls:()=>range('window','后向窗口',1,5,1)+range('z','异常阈值 τ',1,5,.1),draw(){let v=[10,11,10,12,11,50,12,11,10,12,11],sm=v.map((_,i)=>{let q=v.slice(Math.max(0,i-p.window+1),i+1);return q.reduce((a,b)=>a+b)/q.length}),pts=a=>a.map((n,i)=>[80+i*66,200-n*2.6]);let body=poly(pts(v),C.m);if(step>=1)body+=poly(pts(sm),C.a,'',4);body+=text(70,28,'上：后向平滑（起始不足窗口时取已有观测）')+text(70,225,'灰：原始序列　绿：平滑序列','tiny');if(step===2){let left=440-p.z*32,right=440+p.z*32;body+=rect(left,260,right-left,65,C.a,.14)+line(100,330,780,330)+circle(440,295,7,C.b)+circle(440+3.6*32,295,11,3.6>p.z?C.r:C.a)+text(100,360,`独立Z算例：50 → μ；68 → Z=3.6，${3.6>p.z?'候选异常':'未超阈值'}`)}return {body,metrics:[['窗口',p.window],['峰值平滑后',f(sm[5])],['68的Z','3.6']],calc:`后向窗口：${v.slice(6-p.window,6).join(', ')}<br>均值 = ${f(sm[5])}<br>Z(68) = (68−50)/5 = 3.6`,explain:['灰色序列出现尖峰，先解释它可能代表什么。','窗口变大，尖峰被压低，也可能把真实事件抹平。','异常阈值带只标记偏离；是否错误需要核查证据。'][step],data:{raw:v,smoothed:sm,z:3.6,flag:3.6>p.z}}}},
+ {title:'缩放：同一观测，不同参考尺度',short:'缩放与编码',pages:'26—30、36—37、71页',tag:'04 / TRANSFORM',defaults:{leak:'train'},steps:['确定拟合参考集','映射到新尺度','检查测试值与编码'],definition:'缩放参数从训练参考集估计，再用于新数据；类别编码将类别映射为明确的数值表示。',formula:'x′ = (x−a)/(b−a)<br>z = (x−μ)/σ',symbols:'a,b：拟合集的极值；μ,σ：拟合集均值、总体标准差。',boundary:'测试值可超出[0,1]；裁剪是额外决定。全数据拟合仅为泄漏对照。独热编码示例为A、B两个已知类别。',controls:()=>choose('leak','拟合参考集',[['train','仅训练集'],['all','训练＋测试（泄漏对照）']]),draw(){let all=p.leak==='all',hi=all?40:30,mu=all?25:20,sigma=Math.sqrt(all?125:200/3),scaled=[10,20,30,40].map(x=>(x-10)/(hi-10));let body=text(60,40,'蓝：训练观测　橙：测试值40')+line(90,125,790,125)+[10,20,30,40].map((v,i)=>circle(120+i*190,125,10,i===3?C.o:C.b)+text(110+i*190,100,v)).join('');if(step>=1){body+=line(90,260,790,260);scaled.forEach((v,i)=>body+=line(120+i*190,143,120+v*370,242,C.l,'4 4')+circle(120+v*370,260,10,i===3?C.o:C.a)+text(108+v*370,295,f(v)));body+=text(60,340,'下轴：Min-Max 缩放；测试值可以在训练范围之外','tiny')}return {body,metrics:[['拟合最大值',hi],['测试Min-Max',step?f(scaled[3]):'?'],['测试Z',step?f((40-mu)/sigma):'?']],calc:`a=10，b=${hi}，μ=${mu}<br>σ=${f(sigma)}<br>40 → (40−10)/(${hi}−10) = ${f(scaled[3])}`+(step===2?'<br>独热编码：A → [1,0]，B → [0,1]':''),explain:['先确定允许使用的拟合集，测试数据不能参与参数估计。','连接线展示每个原值如何映射到新坐标。','训练范围之外的40得到1.5；独热表示不引入类别大小顺序。'][step],data:{scaled,mean:mu,std:sigma,fit:all?'train+test':'train'}}}},
+ {title:'PCA：旋转主轴，看见信息损失',short:'PCA 投影与重构',pages:'32—35页',tag:'05 / PRINCIPAL COMPONENTS',defaults:{angle:-45},steps:['观察二维样本','中心化与协方差','寻找最大方差轴','投影到一维','重构与残差'],definition:'PCA寻找正交的最大方差方向，将中心化数值数据投影到低维空间。',formula:'S = X<sub>c</sub><sup>T</sup>X<sub>c</sub> / (n−1)<br>z = X<sub>c</sub>w ;　X̂ = μ + zw<sup>T</sup>',symbols:'Xc=X−μ；w为单位方向；本例μ=(1.5,1.5)，分母n−1。',boundary:'默认−45°为第一主轴；拖动其他角度仅作方向比较，不能都称为主成分。解释方差不是预测准确率。',controls:()=>range('angle','投影方向 θ（度）',-90,90,1),draw(){let pts=[[2,0],[0,2],[3,1],[1,3]],a=p.angle*Math.PI/180,w=[Math.cos(a),Math.sin(a)],scores=pts.map(q=>(q[0]-1.5)*w[0]+(q[1]-1.5)*w[1]),rec=scores.map(z=>[1.5+z*w[0],1.5+z*w[1]]),variance=scores.reduce((s,z)=>s+z*z,0)/3,error=pts.reduce((s,q,i)=>s+(q[0]-rec[i][0])**2+(q[1]-rec[i][1])**2,0),xy=q=>[300+(q[0]-1.5)*85,190-(q[1]-1.5)*85];let body=line(80,190,540,190)+line(300,30,300,350)+text(70,28,'二维空间 · 同尺度特征');if(step>=2)body+=line(300-w[0]*190,190+w[1]*190,300+w[0]*190,190-w[1]*190,C.a,'',3);pts.forEach((q,i)=>{let [x,y]=xy(q),[rx,ry]=xy(rec[i]);if(step>=3)body+=line(x,y,rx,ry,C.o,'5 4')+circle(rx,ry,7,C.o);body+=circle(x,y,10,C.b)+text(x+12,y-10,`x${i+1}`);if(step>=3)body+=circle(690,190-scores[i]*65,8,C.o)+text(710,190-scores[i]*65+(i<2?-9:18),`z${i+1}=${f(scores[i])}`,'tiny')});if(step>=3)body+=line(690,35,690,350,C.l)+text(605,28,'一维投影 z');return {body,metrics:[['方向',`${p.angle}°`],['方差占比',`${f(variance/(10/3)*100,1)}%`],['重构SSE',f(error)]],calc:`μ=(1.5,1.5)<br>S = [[5/3,−1],[−1,5/3]]<br>w=(${f(w[0],3)},${f(w[1],3)})<br>λ₁=8/3，λ₂=2/3<br>当前方差=${f(variance,3)}；SSE=${f(error)}`,explain:['四个蓝点是PPT中的二维样本。','以均值为原点计算协方差，非对角项为−1。','拖动主轴：默认−45°达到最大方差，保留80%。','虚线显示正交投影；右侧的一维轴上有些样本重合。','橙点表示重构位置；默认SSE=2，降维丢失了样本差异。'][step],data:{points:pts,w,scores,reconstruction:rec,variance,error}}}},
+ {title:'GPS：逐条审查轨迹关系',short:'GPS 清洗回放',pages:'39—55、73—75页',tag:'06 / TRAJECTORY AUDIT',defaults:{speed:DATA.speed,gap:DATA.gap},steps:['原始日志','按时间排序','精确去重','速度约束过滤'],definition:'轨迹是同一对象按时间组织的有序观测；速度过滤比较候选点与上一保留点。',formula:'v<sub>k</sub> = ‖s<sub>k</sub>−s<sub>prev kept</sub>‖₂ / Δt<br>keep = 1[v<sub>k</sub> ≤ v<sub>max</sub>]',symbols:'位置用局部米制坐标；Δt为秒；同时间异坐标作为冲突拒绝。',boundary:'原12条教学数据。速度规则识别不相容记录，不证明其真实错误原因；阈值并非所有设备通用。',controls:()=>range('speed','速度阈值 m/s',1,40,1)+range('gap','分段阈值 s',30,240,30),draw(){let r=gps(p.speed,p.gap),raw=[...DATA.raw].sort((a,b)=>a.source_id-b.source_id),sorted=DATA.raw,points=step===0?raw:step<3?sorted:r.clean,xy=q=>[70+q.x_m*.53,330-q.y_m*.29];let body=gridBg()+poly(points.map(xy),step<3?C.m:C.a)+text(70,27,'局部坐标（米） · 连线顺序随处理步骤变化');points.forEach(q=>body+=circle(...xy(q),7,step<3?C.b:C.a));if(step===3)r.rejected.forEach(q=>body+=circle(...xy(q),12,C.r,'pulse')+text(xy(q)[0]-50,xy(q)[1]-20,`拒绝 #${q.source_id}`,'',C.r));return {body,metrics:[['原始 / 去重','12 / 11'],['当前保留',step===3?r.clean.length:'待过滤'],['当前拒绝',step===3?r.rejected.length:'待过滤']],calc:`速度阈值=${p.speed} m/s<br>精确重复键：对象＋时间＋坐标<br>拒绝来源ID：${r.rejected.map(q=>q.source_id).join(', ')||'无'}<br>拒绝点速度：${r.rejected.map(q=>f(q.speed_mps)+' m/s').join(', ')||'无'}`,explain:['按日志记录顺序连线，会出现时间回折。','按对象与观测时间排序后，先解决顺序问题。','相同对象、时间和坐标定义精确重复；12条变为11条。','红点是速度规则拒绝记录；下一点与上一保留点比较。'][step],data:r}}},
+ {title:'缺测：分段与插值是不同选择',short:'插值与分段',pages:'56—60页',tag:'07 / MISSING INTERVALS',defaults:{alpha:.5,gap:120},steps:['识别长间隔','按阈值分段','两端线性插值'],definition:'分段保留未知区间；线性插值在两端观测之间假设位置随时间线性变化。',formula:'α = (t−t<sub>a</sub>)/(t<sub>b</sub>−t<sub>a</sub>)<br>ŝ(t) = (1−α)s<sub>a</sub> + αs<sub>b</sub>',symbols:'端点08:04 (800,200)与08:07 (930,240)；间隔180秒。',boundary:'橙色位置是事后估计；未来端点在实时任务中可能不可用。分段不能恢复缺测路径。',controls:()=>range('alpha','插值权重 α',0,1,.01)+range('gap','分段阈值 s',60,240,30),draw(){let x=800+130*p.alpha,y=200+40*p.alpha,split=180>p.gap,body=gridBg()+circle(170,260,12,C.b)+circle(660,105,12,C.b)+text(95,310,'08:04 · (800,200)')+text(550,70,'08:07 · (930,240)');if(step===0)body+=line(190,250,640,115,C.m,'8 8');if(step===1)body+=split?text(270,180,'180 s ＞ 阈值：断开','big',C.o):line(170,260,660,105,C.a);if(step===2)body+=line(170,260,660,105,C.o,'7 7')+circle(170+490*p.alpha,260-155*p.alpha,14,C.o,'pulse')+text(310,350,`估计 (${f(x)}, ${f(y)}) m`,'big',C.o);return {body,metrics:[['观测间隔','180 s'],['是否分段',split?'是':'否'],['当前α',f(p.alpha)]],calc:`α=${f(p.alpha)}<br>x̂ = 800+130×α = ${f(x)}<br>ŷ = 200+40×α = ${f(y)}<br>t = 08:04 + ${f(180*p.alpha)} 秒`,explain:['虚线区间没有连续GPS观测，不能把没有记录当成静止。','只有间隔严格大于阈值时才分段；180秒阈值时不分段。','拖动橙点：它沿假定直线运动，α=0.5时得到(865,220)。'][step],data:{alpha:p.alpha,estimate:[x,y],split}}}},
+ {title:'地图匹配：局部最近与序列最优',short:'地图匹配 DP',pages:'61—64页',tag:'08 / SEQUENCE INFERENCE',defaults:{transition:8},steps:['两个候选状态','初始化累计代价','递推到第二时刻','递推到第三时刻','回溯最优序列'],definition:'候选道路是隐状态；观测代价与转移代价共同定义整条候选序列，动态规划求最小累计代价。',formula:'V<sub>t</sub>(j) = E<sub>t</sub>(j) + min<sub>i</sub>[V<sub>t−1</sub>(i)+C(i,j)]',symbols:'E(A)=0，E(B)=2；C(B,B)=0，其余转移代价由滑块指定。',boundary:'教学代价未归一化为HMM概率；候选状态格不是道路地图。演示不含真实路网候选检索。',controls:()=>range('transition','非BB转移代价',0,12,1),draw(){let r=match(p.transition),body=text(60,30,'圆内：最低累计代价 V；节点上方：观测代价 E');for(let t=0;t<3;t++){let x=160+t*260;body+=text(x-18,365,`t=${t+1}`);for(let j=0;j<2;j++){let y=120+j*155;if(t<2)for(let k=0;k<2;k++){let selected=step===4&&r.path[t]===j&&r.path[t+1]===k;body+=line(x+30,y,x+230,120+k*155,selected?C.a:C.l,selected?'':'4 4',selected?5:2)}let visible=step>=t+1||step===4;body+=circle(x,y,32,step===4&&r.path[t]===j?C.a:C.b)+text(x-8,y-45,`${j?'B':'A'}: E=${j?2:0}`,'tiny')+text(x-10,y+8,visible?r.V[t][j]:'?','big','var(--bg)')}}return {body,metrics:[['局部AAA代价',2*p.transition],['序列最优代价',step===4?r.cost:'待回溯'],['最优序列',step===4?r.path.map(j=>j?'B':'A').join(''):'?']],calc:`V₁=[0,2]<br>V₂=[${r.V[1]}]<br>V₃=[${r.V[2]}]<br>V₂(B)=2+min(0+${p.transition}, 2+0)=${r.V[1][1]}`,explain:['每列两个候选。不能从图中连线长度读取道路距离。','第一时刻累计代价等于观测代价。','第二列比较所有前驱，再加当前观测代价。','保存最低代价的同时保存前驱，供最后回溯。','绿色路径是整体最优；默认BBB代价6，优于AAA的16。'][step],data:r}}},
+ {title:'Douglas–Peucker：递归决定保留点',short:'轨迹简化 RDP',pages:'65—67页',tag:'09 / GEOMETRIC SIMPLIFICATION',defaults:{epsilon:.6},steps:['首尾线段近似','找到最大偏差','递归处理子段','比较简化结果'],definition:'以首尾线段近似子轨迹；最大点到线段距离超过容差时保留该点，再对两侧递归。',formula:'d<sub>max</sub> = max<sub>i</sub> d(p<sub>i</sub>,[p<sub>a</sub>,p<sub>b</sub>])<br>split ⇔ d<sub>max</sub> &gt; ε',symbols:'ε：米制几何容差；距离为点到线段距离；等于阈值时不分裂。',boundary:'几何误差约束不保证保留速度、停留或时间语义。原始观测应独立保存。',controls:()=>range('epsilon','几何容差 ε / m',.1,2.2,.1),draw(){let points=[[0,0],[1,.2],[2,2],[3,.2],[4,0]],r=simplify(points,p.epsilon),xy=q=>[110+q[0]*155,310-q[1]*110],body=gridBg()+poly(points.map(xy),C.m,'5 5');if(step<2){body+=line(...xy(points[0]),...xy(points[4]),C.o,'',3);if(step===1)body+=line(...xy(points[2]),420,310,C.r,'5 5')+text(440,180,'dmax = 2 m','',C.r)}if(step===2){let first=r.events[0];if(first.split)body+=poly([xy(points[0]),xy(points[2]),xy(points[4])],C.o);else body+=line(...xy(points[0]),...xy(points[4]),C.a)}if(step===3)body+=poly(r.keep.map(i=>xy(points[i])),C.a,'',5);points.forEach((q,i)=>body+=circle(...xy(q),step===3&&r.keep.includes(i)?13:8,step===3?(r.keep.includes(i)?C.a:C.l):C.b)+text(xy(q)[0]-9,xy(q)[1]+28,`p${i}`));return {body,metrics:[['原点数',5],['保留点数',step===3?r.keep.length:'待递归'],['容差',`${f(p.epsilon)} m`]],calc:r.events.map(e=>`[p${e.a},p${e.b}]：dmax=${f(e.d,3)}<br>${e.split?`保留p${e.j}，分裂`:'不分裂'}`).join('<br>'),explain:['先用首尾连线近似整段，原始折线作为虚线保留。','峰值p2到首尾线段距离2米，决定是否分裂。','默认ε=0.6时，两侧最大偏差约0.566，都不再分裂。','默认保留0、2、4；试ε=0.5或2.1，观察5点与2点的结果。'][step],data:r}}},
+ {title:'时空格网：尺度改变你看到的模式',short:'时空聚合',pages:'31、68—70页',tag:'10 / SPATIOTEMPORAL AGGREGATION',defaults:{cell:250,window:180,count:'points'},steps:['原始空间观测','空间格网计数','时间窗口与设备去重'],definition:'按空间格网和左闭右开时间窗口分组；点数与去重设备数回答不同问题。',formula:'N<sub>g,w</sub> = Σ<sub>i</sub> 1[s<sub>i</sub>∈g ∧ t<sub>i</sub>∈W<sub>w</sub>]',symbols:'格网原点(0,0)；时间窗口从当日00:00开始；仅使用GPS清洗保留点。',boundary:'轨迹点数随采样频率变化；原数据只有一台设备。聚合丢失精确位置与顺序，OD计数也不能恢复路径。',controls:()=>range('cell','格网边长 m',100,500,50)+range('window','时间窗口 s',60,300,60)+choose('count','统计对象',[['points','轨迹点'],['devices','去重设备']]),draw(){let clean=gps(12,120).clean,bins={};for(let q of clean){let gx=Math.floor(q.x_m/p.cell),gy=Math.floor(q.y_m/p.cell),tw=Math.floor(sec(q.time)/p.window),key=[gx,gy,tw].join('/');if(!bins[key])bins[key]={gx,gy,tw,points:0,devices:new Set()};bins[key].points++;bins[key].devices.add(q.object_id)}let groups=Object.entries(bins).map(([key,r])=>({key,...r,devices:r.devices.size})),body='',xy=q=>[65+q.x_m*.65,305-q.y_m*.65];if(step===0)body=gridBg()+clean.map(q=>circle(...xy(q),8,C.b)).join('');else{let maxX=Math.ceil(1000/p.cell),maxY=Math.ceil(300/p.cell),scale=Math.min(680/(maxX*p.cell),260/(maxY*p.cell));for(let x=0;x<maxX;x++)for(let y=0;y<maxY;y++){let relevant=groups.filter(q=>q.gx===x&&q.gy===y),n=p.count==='points'?relevant.reduce((a,q)=>a+q.points,0):relevant.length?1:0;body+=rect(65+x*p.cell*scale,320-(y+1)*p.cell*scale,p.cell*scale-4,p.cell*scale-4,C.a,.08+n*.06)+text(75+x*p.cell*scale,340-(y+1)*p.cell*scale,n||'·')}if(step===2)body+=text(65,365,`下方结果按时间窗口分别导出；上图展示空间总览`,'tiny')}return {body,metrics:[['保留GPS点',10],['格网×时间组',groups.length],['设备总数',1]],calc:`格网边长=${p.cell} m<br>时间窗口=${p.window} s<br>空间总览与分窗口结果请区分。<br>每组字段：格网 / 窗口 / 点数 / 设备数`,explain:['蓝点对应保留的10个GPS观测，来自同一设备。','改变格网尺度，观察空间分布如何合并。','切换点数与设备数：同一设备多次采样不能当成多台设备。'][step],data:groups}}}
+];
+function controls(){ $('controls').innerHTML=LABS[active].controls() }
+function paint(){let lab=LABS[active],r=lab.draw();result={lab:lab.short,parameters:{...p},step:step+1,...r.data&&{result:r.data}};$('stage').innerHTML=svg(r.body);$('metrics').innerHTML=r.metrics.map(([k,v])=>`<div class="metric"><small>${k}</small><strong>${v}</strong></div>`).join('');$('calculation').innerHTML=r.calc;$('explanation').textContent=r.explain;$('stepTitle').textContent=lab.steps[step];$('stepNum').textContent=String(step+1).padStart(2,'0');$('stepLabel').textContent=`${step+1} / ${lab.steps.length}`;$('steps').innerHTML=lab.steps.map((t,i)=>`<button aria-label="${t}" title="${t}" onclick="goStep(${i})" class="${i<=step?'done':''}"></button>`).join('');$('prev').disabled=step===0;$('next').disabled=step===lab.steps.length-1;$('data').textContent=JSON.stringify(result,null,2)}
+function stop(){clearInterval(timer);timer=null;$('play').textContent='▶ 播放'}
+function selectLab(i){stop();active=i;step=0;p={...(window.classroomDefaults?.(i)??LABS[i].defaults)};$('nav').innerHTML=LABS.map((l,j)=>`<button class="${i===j?'active':''}" onclick="selectLab(${j})"><small>${String(j+1).padStart(2,'0')}</small>${l.short}</button>`).join('');let l=LABS[i];$('eyebrow').textContent=l.tag;$('title').textContent=l.title;$('page').textContent='PPT v4 · '+l.pages;$('definition').textContent=l.definition;$('formula').innerHTML=l.formula;$('symbols').textContent=l.symbols;$('boundary').textContent=l.boundary;controls();paint()}
+function setParam(key,value){p[key]=typeof LABS[active].defaults[key]==='number'?Number(value):value;let out=$('out-'+key);if(out)out.textContent=p[key];paint()}
+function advance(d){step=Math.max(0,Math.min(LABS[active].steps.length-1,step+d));paint();if(step===LABS[active].steps.length-1)stop()}
+function goStep(i){stop();step=i;paint()}
+function reset(){selectLab(active)}
+function play(){if(timer){stop();return}if(step===LABS[active].steps.length-1)step=0;paint();$('play').textContent='Ⅱ 暂停';timer=setInterval(()=>advance(1),1800)}
+async function full(){try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch(e){$('explanation').textContent='浏览器未允许全屏，可使用窗口最大化。'}}
+function exportData(){let blob=new Blob([JSON.stringify(result,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`实验${active+1}_结果.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+document.addEventListener('keydown',e=>{if(['INPUT','SELECT','BUTTON','SUMMARY','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')advance(1);if(e.key==='ArrowLeft')advance(-1);if(e.code==='Space'){e.preventDefault();play()}});
+selectLab(0);
+
+/* Pure teaching algorithms: browser execution events mirror teaching_algorithms.py. */
+function computeTrace(method,p,raw=[]){
+ const sec=t=>t.split(':').reduce((s,v,i)=>s+Number(v)*[3600,60,1][i],0);
+ const events=[];const emit=(action,state)=>events.push({action,state:JSON.parse(JSON.stringify(state))});let result;
+ if(method==='knn'){
+  const donors=[[1,0,10],[2,2,14],[3,6,40]],distances=[];emit('input',{query:p.query,k:p.k,donors});
+  for(const [id,a,b] of donors){const distance=Math.abs(p.query-a);distances.push([distance,id,b]);emit('distance',{id,distance})}
+  distances.sort((a,b)=>a[0]-b[0]||a[1]-b[1]);emit('sort',{order:distances.map(r=>r[1])});
+  const chosen=distances.slice(0,p.k);emit('select',{ids:chosen.map(r=>r[1])});let total=0;
+  for(const [distance,id,b] of chosen){total+=b;emit('sum',{id,total})}
+  const estimate=total/chosen.length;emit('result',{estimate});result={estimate,ids:chosen.map(r=>r[1])};
+ }else if(method==='pca'){
+  const points=[[2,0],[0,2],[3,1],[1,3]],n=points.length;emit('input',{points});
+  const mean=[0,1].map(j=>points.reduce((s,q)=>s+q[j],0)/n);emit('mean',{mean});let centered=[];
+  points.forEach((q,id)=>{centered.push(q.map((v,j)=>v-mean[j]));emit('center',{id,centered:centered[id]})});
+  const sum=[[0,0],[0,0]];centered.forEach((q,id)=>{for(let a=0;a<2;a++)for(let b=0;b<2;b++)sum[a][b]+=q[a]*q[b];emit('outer',{id,sum})});
+  const covariance=sum.map(r=>r.map(v=>v/(n-1)));emit('covariance',{covariance});
+  const a=covariance[0][0],b=covariance[0][1],c=covariance[1][1],delta=Math.sqrt((a-c)**2+4*b*b),eigenvalues=[(a+c+delta)/2,(a+c-delta)/2];emit('eigen',{eigenvalues});
+  let axis=[b,eigenvalues[0]-a],norm=Math.hypot(...axis);axis=axis.map(v=>-v/norm);emit('axis',{axis});
+  const w=[Math.cos(p.angle*Math.PI/180),Math.sin(p.angle*Math.PI/180)];emit('direction',{angle:p.angle,w});
+  const scores=[];centered.forEach((q,id)=>{scores.push(q.reduce((s,v,j)=>s+v*w[j],0));emit('project',{id,score:scores[id]})});
+  const reconstruction=[];let sse=0;scores.forEach((z,id)=>{const point=mean.map((v,j)=>v+z*w[j]);reconstruction.push(point);const error=point.reduce((s,v,j)=>s+(points[id][j]-v)**2,0);sse+=error;emit('reconstruct',{id,point,error,sse})});
+  const ratio=scores.reduce((s,z)=>s+z*z,0)/(n-1)/(eigenvalues[0]+eigenvalues[1]);emit('result',{ratio,sse});result={scores,reconstruction,sse,ratio,covariance,eigenvalues};
+ }else if(method==='matching'){
+  const emission=[0,2],values=[emission.slice()],back=[[null,null]];emit('input',{emission,transition:p.transition});emit('initialize',{values:values[0]});
+  for(let t=1;t<3;t++){let row=[],predecessors=[];for(let j=0;j<2;j++){let candidates=[];for(let i=0;i<2;i++){const cost=i===1&&j===1?0:p.transition;candidates.push(values[t-1][i]+cost);emit('candidate',{t,j,i,candidate:candidates[i]})}const previous=candidates[0]<=candidates[1]?0:1;row.push(emission[j]+candidates[previous]);predecessors.push(previous);emit('update',{t,j,value:row[j],previous})}values.push(row);back.push(predecessors)}
+  let end=values[2][0]<=values[2][1]?0:1;const path=[end];emit('terminal',{end,cost:values[2][end]});for(let t=2;t>0;t--){end=back[t][end];path.unshift(end);emit('backtrack',{t:t-1,state:end})}emit('result',{path,cost:Math.min(...values[2])});result={path,cost:Math.min(...values[2]),values,back};
+ }else if(method==='rdp'){
+  const points=[[0,0],[1,.2],[2,2],[3,.2],[4,0]],keep=new Set([0,4]);emit('input',{points,epsilon:p.epsilon});
+  function visit(a,b,depth=0){emit('enter',{a,b,depth});if(b-a<=1){emit('leaf',{a,b});return}const dx=points[b][0]-points[a][0],dy=points[b][1]-points[a][1];let maximum=-1,index=null;for(let i=a+1;i<b;i++){const den=dx*dx+dy*dy;let u=den?((points[i][0]-points[a][0])*dx+(points[i][1]-points[a][1])*dy)/den:0;u=Math.max(0,Math.min(1,u));const foot=[points[a][0]+u*dx,points[a][1]+u*dy],distance=Math.hypot(points[i][0]-foot[0],points[i][1]-foot[1]);if(distance>maximum){maximum=distance;index=i}emit('distance',{a,b,id:i,u,foot,distance})}const split=maximum>p.epsilon;emit('decision',{a,b,id:index,maximum,split});if(split){keep.add(index);visit(a,index,depth+1);visit(index,b,depth+1)}emit('return',{a,b,keep:[...keep].sort((a,b)=>a-b)})}
+  visit(0,4);result={keep:[...keep].sort((a,b)=>a-b)};emit('result',result);
+ }else if(method==='gps'){
+  const rows=raw.map(r=>({...r}));emit('input',{count:rows.length});rows.sort((a,b)=>a.object_id.localeCompare(b.object_id)||a.time.localeCompare(b.time)||a.source_id-b.source_id);emit('sort',{ids:rows.map(r=>r.source_id)});
+  const seen=new Set(),last={},segments={},kept=[],rejected=[],duplicates=[];
+  for(const r of rows){const id=r.source_id,key=JSON.stringify([r.object_id,r.time,+r.x_m,+r.y_m]),duplicate=seen.has(key);emit('duplicate',{id,duplicate});if(duplicate){duplicates.push(id);continue}seen.add(key);const prev=last[r.object_id],dt=prev?sec(r.time)-sec(prev.time):null,distance=prev?Math.hypot(r.x_m-prev.x_m,r.y_m-prev.y_m):null,v=prev?(dt>0?distance/dt:Infinity):0;emit('speed',{id,previous:prev?prev.source_id:null,dt,distance,speed:Number.isFinite(v)?v:null});const accepted=v<=p.speed;if(accepted){const segment=(segments[r.object_id]||1)+(prev&&dt>p.gap?1:0);segments[r.object_id]=segment;last[r.object_id]=r;kept.push(id)}else rejected.push(id);emit('decision',{id,accepted,last:last[r.object_id]?last[r.object_id].source_id:null,segment:segments[r.object_id]||1})}
+  result={kept,rejected,duplicates};emit('result',result);
+ }
+ if(method==='impute'){
+  const observed=[2,3,4,100];emit('input',{observed,method:p.method});const ordered=[...observed].sort((a,b)=>a-b);emit('sort',{ordered});let total=0;observed.forEach((value,id)=>{total+=value;emit('sum',{id,value,total})});const mean=total/4,median=(ordered[1]+ordered[2])/2;emit('statistics',{mean,median});const estimate=p.method==='mean'?mean:median;result={estimate,filled:[...observed,estimate]};emit('result',result);
+ }else if(method==='signal'){
+  const raw=[10,11,10,12,11,50,12,11,10,12,11];emit('input',{raw,window:p.window});const smoothed=[];for(let id=0;id<raw.length;id++){const values=raw.slice(Math.max(0,id-p.window+1),id+1);emit('window',{id,values});const average=values.reduce((a,b)=>a+b,0)/values.length;smoothed.push(average);emit('average',{id,average})}const score=(68-50)/5;emit('zscore',{value:68,mean:50,std:5,score});const flag=Math.abs(score)>p.z;emit('decision',{score,threshold:p.z,flag});result={smoothed,score,flag};emit('result',result);
+ }else if(method==='scale'){
+  const values=[10,20,30,40];emit('input',{values,leak:p.leak});const fit=p.leak==='all'?values:values.slice(0,3),low=Math.min(...fit),high=Math.max(...fit);emit('fit',{fit,low,high});const scaled=[];values.forEach((value,id)=>{const transformed=(value-low)/(high-low);scaled.push(transformed);emit('transform',{id,value,scaled:transformed})});const mean=fit.reduce((a,b)=>a+b,0)/fit.length,std=Math.sqrt(fit.reduce((s,v)=>s+(v-mean)**2,0)/fit.length);emit('standardize',{mean,std,test_z:(40-mean)/std});const codes=[];for(const category of ['A','B']){const code=['A','B'].map(c=>Number(category===c));codes.push(code);emit('encode',{category,code})}result={scaled,test_z:(40-mean)/std,codes};emit('result',result);
+ }else if(method==='interpolate'){
+  const start=[800,200],end=[930,240];emit('input',{start,end});const interval=3*60;emit('interval',{interval});const split=interval>p.gap;emit('decision',{interval,gap:p.gap,split});emit('weight',{alpha:p.alpha,elapsed:interval*p.alpha});const estimate=[];for(let id=0;id<2;id++){const value=(1-p.alpha)*start[id]+p.alpha*end[id];estimate.push(value);emit('coordinate',{id,value})}result={estimate,split};emit('result',result);
+ }else if(method==='aggregate'){
+  const kept=computeTrace('gps',{speed:12,gap:120},raw).result.kept;const rows=raw.filter(r=>kept.includes(r.source_id)).slice().sort((a,b)=>a.object_id.localeCompare(b.object_id)||a.time.localeCompare(b.time)||a.source_id-b.source_id);emit('input',{count:rows.length,cell:p.cell,window:p.window});const groups=new Map();for(const r of rows){const gx=Math.floor(r.x_m/p.cell),gy=Math.floor(r.y_m/p.cell),tw=Math.floor(sec(r.time)/p.window),key=`${gx}/${gy}/${tw}`;emit('assign',{id:r.source_id,gx,gy,tw,key});if(!groups.has(key))groups.set(key,{points:0,devices:new Set()});const g=groups.get(key);g.points++;g.devices.add(r.object_id);emit('increment',{key,points:g.points,devices:g.devices.size})}result={groups:[...groups].map(([key,g])=>({key,points:g.points,devices:g.devices.size})),count:p.count};emit('result',result);
+ }
+ return {events,result};
+}
+if(typeof module!=='undefined')module.exports={computeTrace};
+
+const CODE_BUNDLE={"knn": {"highlights": {"input": [3, 4], "sort": [9, 10], "select": [11, 12], "result": [17, 18], "distance": [7, 8], "sum": [15, 16]}, "start": 16, "lines": ["def knn(query=1, k=2, emit=lambda *args: None):", "    donors = [(1, 0, 10), (2, 2, 14), (3, 6, 40)]", "    distances = []", "    emit('input', {'query': query, 'k': k, 'donors': donors})", "    for record_id, a, b in donors:", "        distance = abs(query - a)", "        distances.append([distance, record_id, b])", "        emit('distance', {'id': record_id, 'distance': distance})", "    distances.sort(key=lambda r: (r[0], r[1]))", "    emit('sort', {'order': [r[1] for r in distances]})", "    chosen = distances[:k]", "    emit('select', {'ids': [r[1] for r in chosen]})", "    total = 0", "    for distance, record_id, b in chosen:", "        total += b", "        emit('sum', {'id': record_id, 'total': total})", "    estimate = total / len(chosen)", "    emit('result', {'estimate': estimate})", "    return {'estimate': estimate, 'ids': [r[1] for r in chosen]}"], "actions": {"input": 4, "sort": 10, "select": 12, "result": 18, "distance": 8, "sum": 16}}, "pca": {"highlights": {"input": [3, 4], "mean": [5, 6], "covariance": [17, 18], "eigen": [21, 22], "axis": [26, 27], "direction": [28, 29], "result": [41, 42], "center": [9, 10], "outer": [16], "project": [32, 33], "reconstruct": [39, 40]}, "start": 37, "lines": ["def pca(angle=-45, emit=lambda *args: None):", "    points = [[2, 0], [0, 2], [3, 1], [1, 3]]", "    n = len(points)", "    emit('input', {'points': points})", "    mean = [sum(q[j] for q in points) / n for j in range(2)]", "    emit('mean', {'mean': mean})", "    centered = []", "    for i, q in enumerate(points):", "        centered.append([q[j] - mean[j] for j in range(2)])", "        emit('center', {'id': i, 'centered': centered[-1]})", "    outer_sum = [[0.0, 0.0], [0.0, 0.0]]", "    for i, q in enumerate(centered):", "        for a in range(2):", "            for b in range(2):", "                outer_sum[a][b] += q[a] * q[b]", "        emit('outer', {'id': i, 'sum': [row[:] for row in outer_sum]})", "    covariance = [[v / (n - 1) for v in row] for row in outer_sum]", "    emit('covariance', {'covariance': covariance})", "    a, b, c = covariance[0][0], covariance[0][1], covariance[1][1]", "    delta = math.sqrt((a - c) ** 2 + 4 * b * b)", "    eigenvalues = [(a + c + delta) / 2, (a + c - delta) / 2]", "    emit('eigen', {'eigenvalues': eigenvalues})", "    # 本例 b 非零；显式归一化二维特征向量。", "    axis = [b, eigenvalues[0] - a]", "    norm = math.hypot(*axis)", "    axis = [-v / norm for v in axis]  # 取第一个分量为正的符号", "    emit('axis', {'axis': axis})", "    w = [math.cos(math.radians(angle)), math.sin(math.radians(angle))]", "    emit('direction', {'angle': angle, 'w': w})", "    scores = []", "    for i, q in enumerate(centered):", "        scores.append(sum(q[j] * w[j] for j in range(2)))", "        emit('project', {'id': i, 'score': scores[-1]})", "    reconstruction, sse = [], 0", "    for i, z in enumerate(scores):", "        r = [mean[j] + z * w[j] for j in range(2)]", "        reconstruction.append(r)", "        error = sum((points[i][j] - r[j]) ** 2 for j in range(2))", "        sse += error", "        emit('reconstruct', {'id': i, 'point': r, 'error': error, 'sse': sse})", "    ratio = sum(z * z for z in scores) / (n - 1) / sum(eigenvalues)", "    emit('result', {'ratio': ratio, 'sse': sse})", "    return {'scores': scores, 'reconstruction': reconstruction, 'sse': sse,", "            'ratio': ratio, 'covariance': covariance, 'eigenvalues': eigenvalues}"], "actions": {"input": 4, "mean": 6, "covariance": 18, "eigen": 22, "axis": 27, "direction": 29, "result": 42, "center": 10, "outer": 16, "project": 33, "reconstruct": 40}}, "matching": {"highlights": {"input": [3, 4], "initialize": [5], "terminal": [21, 22], "result": [27], "backtrack": [25, 26], "update": [16, 17], "candidate": [12, 13]}, "start": 83, "lines": ["def matching(transition=8, emit=lambda *args: None):", "    emission = [0, 2]", "    values, back = [emission[:]], [[None, None]]", "    emit('input', {'emission': emission, 'transition': transition})", "    emit('initialize', {'values': values[0]})", "    for t in range(1, 3):", "        row, predecessors = [], []", "        for j in range(2):", "            candidates = []", "            for i in range(2):", "                cost = 0 if i == j == 1 else transition", "                candidates.append(values[t - 1][i] + cost)", "                emit('candidate', {'t': t, 'j': j, 'i': i, 'candidate': candidates[-1]})", "            previous = min(range(2), key=lambda i: (candidates[i], i))", "            row.append(emission[j] + candidates[previous])", "            predecessors.append(previous)", "            emit('update', {'t': t, 'j': j, 'value': row[-1], 'previous': previous})", "        values.append(row)", "        back.append(predecessors)", "    end = min(range(2), key=lambda j: (values[-1][j], j))", "    path = [end]", "    emit('terminal', {'end': end, 'cost': values[-1][end]})", "    for t in range(2, 0, -1):", "        end = back[t][end]", "        path.insert(0, end)", "        emit('backtrack', {'t': t - 1, 'state': end})", "    emit('result', {'path': path, 'cost': min(values[-1])})", "    return {'path': path, 'cost': min(values[-1]), 'values': values, 'back': back}"], "actions": {"input": 4, "initialize": 5, "terminal": 22, "result": 27, "backtrack": 26, "update": 17, "candidate": 13}}, "rdp": {"highlights": {"input": [3, 4], "result": [30, 31], "enter": [7], "decision": [22, 23], "return": [28], "leaf": [9], "distance": [21]}, "start": 113, "lines": ["def rdp(epsilon=.6, emit=lambda *args: None):", "    points = [[0, 0], [1, .2], [2, 2], [3, .2], [4, 0]]", "    keep = {0, len(points) - 1}", "    emit('input', {'points': points, 'epsilon': epsilon})", "", "    def visit(a, b, depth=0):", "        emit('enter', {'a': a, 'b': b, 'depth': depth})", "        if b - a <= 1:", "            emit('leaf', {'a': a, 'b': b})", "            return", "        dx, dy = points[b][0] - points[a][0], points[b][1] - points[a][1]", "        maximum, index = -1, None", "        for i in range(a + 1, b):", "            denominator = dx * dx + dy * dy", "            u = ((points[i][0] - points[a][0]) * dx + (points[i][1] - points[a][1]) * dy) / denominator if denominator else 0", "            u = max(0, min(1, u))", "            foot = [points[a][0] + u * dx, points[a][1] + u * dy]", "            distance = math.hypot(points[i][0] - foot[0], points[i][1] - foot[1])", "            if distance > maximum:", "                maximum, index = distance, i  # 相同距离保留较早点", "            emit('distance', {'a': a, 'b': b, 'id': i, 'u': u, 'foot': foot, 'distance': distance})", "        split = maximum > epsilon", "        emit('decision', {'a': a, 'b': b, 'id': index, 'maximum': maximum, 'split': split})", "        if split:", "            keep.add(index)", "            visit(a, index, depth + 1)", "            visit(index, b, depth + 1)", "        emit('return', {'a': a, 'b': b, 'keep': sorted(keep)})", "", "    visit(0, len(points) - 1)", "    emit('result', {'keep': sorted(keep)})", "    return {'keep': sorted(keep)}"], "actions": {"input": 4, "result": 31, "enter": 7, "decision": 23, "return": 28, "leaf": 9, "distance": 21}}, "gps": {"highlights": {"input": [4], "sort": [5, 6], "result": [35, 36], "duplicate": [13, 14], "speed": [22, 23, 24], "decision": [33, 34]}, "start": 147, "lines": ["def gps(speed=12, gap=120, emit=lambda *args: None):", "    with (Path(__file__).parent / 'data/gps_raw.csv').open(encoding='utf-8-sig') as f:", "        rows = [dict(r, source_id=i + 1) for i, r in enumerate(csv.DictReader(f))]", "    emit('input', {'count': len(rows)})", "    rows.sort(key=lambda r: (r['object_id'], r['time'], r['source_id']))", "    emit('sort', {'ids': [r['source_id'] for r in rows]})", "    seen, last, segments = set(), {}, {}", "    kept, rejected, duplicates = [], [], []", "    seconds = lambda t: sum(int(v) * u for v, u in zip(t.split(':'), [3600, 60, 1]))", "    for r in rows:", "        source = r['source_id']", "        key = (r['object_id'], r['time'], float(r['x_m']), float(r['y_m']))", "        duplicate = key in seen", "        emit('duplicate', {'id': source, 'duplicate': duplicate})", "        if duplicate:", "            duplicates.append(source)", "            continue", "        seen.add(key)", "        previous = last.get(r['object_id'])", "        dt = seconds(r['time']) - seconds(previous['time']) if previous else None", "        distance = math.hypot(float(r['x_m']) - float(previous['x_m']), float(r['y_m']) - float(previous['y_m'])) if previous else None", "        v = distance / dt if previous and dt > 0 else (math.inf if previous else 0)", "        emit('speed', {'id': source, 'previous': previous['source_id'] if previous else None,", "                       'dt': dt, 'distance': distance, 'speed': v if math.isfinite(v) else None})", "        accepted = v <= speed", "        if accepted:", "            segment = segments.get(r['object_id'], 1) + int(previous is not None and dt > gap)", "            segments[r['object_id']] = segment", "            last[r['object_id']] = r", "            kept.append(source)", "        else:", "            rejected.append(source)", "        emit('decision', {'id': source, 'accepted': accepted, 'last': last.get(r['object_id'], {}).get('source_id'),", "                          'segment': segments.get(r['object_id'], 1)})", "    result = {'kept': kept, 'rejected': rejected, 'duplicates': duplicates}", "    emit('result', result)", "    return result"], "actions": {"input": 4, "sort": 6, "result": 36, "duplicate": 14, "speed": 23, "decision": 33}}, "impute": {"highlights": {"input": [2, 3], "sort": [4, 5], "statistics": [11, 12], "result": [13, 14], "sum": [8, 9]}, "start": 186, "lines": ["def impute(method='mean', emit=lambda *args: None):", "    observed = [2, 3, 4, 100]", "    emit('input', {'observed': observed, 'method': method})", "    ordered = sorted(observed)", "    emit('sort', {'ordered': ordered})", "    total = 0", "    for i, value in enumerate(observed):", "        total += value", "        emit('sum', {'id': i, 'value': value, 'total': total})", "    mean = total / len(observed)", "    median = (ordered[1] + ordered[2]) / 2", "    emit('statistics', {'mean': mean, 'median': median})", "    estimate = mean if method == 'mean' else median", "    emit('result', {'estimate': estimate, 'filled': observed + [estimate]})", "    return {'estimate': estimate, 'filled': observed + [estimate]}"], "actions": {"input": 3, "sort": 5, "statistics": 12, "result": 14, "sum": 9}}, "signal": {"highlights": {"input": [2, 3], "zscore": [11, 12], "decision": [13, 14], "result": [15], "window": [6, 7], "average": [9, 10]}, "start": 203, "lines": ["def signal(window=3, z=3, emit=lambda *args: None):", "    raw = [10, 11, 10, 12, 11, 50, 12, 11, 10, 12, 11]", "    emit('input', {'raw': raw, 'window': window})", "    smoothed = []", "    for i in range(len(raw)):", "        values = raw[max(0, i-window+1):i+1]", "        emit('window', {'id': i, 'values': values})", "        average = sum(values) / len(values)", "        smoothed.append(average)", "        emit('average', {'id': i, 'average': average})", "    score = (68 - 50) / 5  # 独立参考算例，非从上方序列拟合", "    emit('zscore', {'value': 68, 'mean': 50, 'std': 5, 'score': score})", "    flag = abs(score) > z", "    emit('decision', {'score': score, 'threshold': z, 'flag': flag})", "    emit('result', {'smoothed': smoothed, 'score': score, 'flag': flag})", "    return {'smoothed': smoothed, 'score': score, 'flag': flag}"], "actions": {"input": 3, "zscore": 12, "decision": 14, "result": 15, "window": 7, "average": 10}}, "scale": {"highlights": {"input": [2, 3], "fit": [5, 6], "standardize": [13, 14], "result": [20], "transform": [10, 11], "encode": [18, 19]}, "start": 221, "lines": ["def scale(leak='train', emit=lambda *args: None):", "    values = [10, 20, 30, 40]", "    emit('input', {'values': values, 'leak': leak})", "    fit = values if leak == 'all' else values[:3]", "    low, high = min(fit), max(fit)", "    emit('fit', {'fit': fit, 'low': low, 'high': high})", "    scaled = []", "    for i, value in enumerate(values):", "        transformed = (value-low)/(high-low)", "        scaled.append(transformed)", "        emit('transform', {'id': i, 'value': value, 'scaled': transformed})", "    mean = sum(fit)/len(fit)", "    std = math.sqrt(sum((v-mean)**2 for v in fit)/len(fit))", "    emit('standardize', {'mean': mean, 'std': std, 'test_z': (40-mean)/std})", "    codes = []", "    for category in ['A', 'B']:", "        code = [int(category == c) for c in ['A', 'B']]", "        codes.append(code)", "        emit('encode', {'category': category, 'code': code})", "    emit('result', {'scaled': scaled, 'test_z': (40-mean)/std, 'codes': codes})", "    return {'scaled': scaled, 'test_z': (40-mean)/std, 'codes': codes}"], "actions": {"input": 3, "fit": 6, "standardize": 14, "result": 20, "transform": 11, "encode": 19}}, "interpolate": {"highlights": {"input": [2, 3], "interval": [4, 5], "decision": [6, 7], "weight": [8], "result": [14], "coordinate": [12, 13]}, "start": 244, "lines": ["def interpolate(alpha=.5, gap=120, emit=lambda *args: None):", "    start, end = [800, 200], [930, 240]", "    emit('input', {'start': start, 'end': end})", "    interval = 3 * 60  # 08:07 - 08:04，单位秒", "    emit('interval', {'interval': interval})", "    split = interval > gap", "    emit('decision', {'interval': interval, 'gap': gap, 'split': split})", "    emit('weight', {'alpha': alpha, 'elapsed': interval*alpha})", "    estimate = []", "    for j in range(2):", "        value = (1-alpha)*start[j] + alpha*end[j]", "        estimate.append(value)", "        emit('coordinate', {'id': j, 'value': value})", "    emit('result', {'estimate': estimate, 'split': split})", "    return {'estimate': estimate, 'split': split}"], "actions": {"input": 3, "interval": 5, "decision": 7, "weight": 8, "result": 14, "coordinate": 13}}, "aggregate": {"highlights": {"input": [6, 7], "result": [19, 20], "assign": [13, 14], "increment": [17, 18]}, "start": 261, "lines": ["def aggregate(cell=250, window=180, count='points', emit=lambda *args: None):", "    # 固定使用12 m/s、120秒的清洗结果，独立于GPS页当前滑块。", "    kept = gps(12, 120)['kept']", "    with (Path(__file__).parent / 'data/gps_raw.csv').open(encoding='utf-8-sig') as f:", "        rows = [dict(r, source_id=i+1) for i, r in enumerate(csv.DictReader(f))]", "    rows = sorted((r for r in rows if r['source_id'] in kept), key=lambda r: (r['object_id'],r['time'],r['source_id']))", "    emit('input', {'count': len(rows), 'cell': cell, 'window': window})", "    groups = {}", "    for r in rows:", "        gx, gy = math.floor(float(r['x_m'])/cell), math.floor(float(r['y_m'])/cell)", "        h, m, s = map(int, r['time'].split(':'))", "        tw = math.floor((h*3600+m*60+s)/window)", "        key = f'{gx}/{gy}/{tw}'", "        emit('assign', {'id': r['source_id'], 'gx': gx, 'gy': gy, 'tw': tw, 'key': key})", "        group = groups.setdefault(key, {'points': 0, 'devices': set()})", "        group['points'] += 1", "        group['devices'].add(r['object_id'])", "        emit('increment', {'key': key, 'points': group['points'], 'devices': len(group['devices'])})", "    output = [{'key': key, 'points': g['points'], 'devices': len(g['devices'])} for key, g in groups.items()]", "    emit('result', {'groups': output, 'count': count})", "    return {'groups': output, 'count': count}"], "actions": {"input": 7, "result": 20, "assign": 14, "increment": 18}}};
+const PYTHON_SOURCE="\"\"\"可运行的逐步教学实现；只用 Python 标准库。\npython3 teaching_algorithms.py knn --k 2\npython3 teaching_algorithms.py pca --angle -45\npython3 teaching_algorithms.py matching --transition 8\npython3 teaching_algorithms.py rdp --epsilon .6\npython3 teaching_algorithms.py gps --speed 12 --gap 120\n每个 emit 对应网页里一个步骤；返回值为最终结果。\n\"\"\"\nimport math\nimport json\nimport argparse\nimport csv\nfrom pathlib import Path\n\n\ndef knn(query=1, k=2, emit=lambda *args: None):\n    donors = [(1, 0, 10), (2, 2, 14), (3, 6, 40)]\n    distances = []\n    emit('input', {'query': query, 'k': k, 'donors': donors})\n    for record_id, a, b in donors:\n        distance = abs(query - a)\n        distances.append([distance, record_id, b])\n        emit('distance', {'id': record_id, 'distance': distance})\n    distances.sort(key=lambda r: (r[0], r[1]))\n    emit('sort', {'order': [r[1] for r in distances]})\n    chosen = distances[:k]\n    emit('select', {'ids': [r[1] for r in chosen]})\n    total = 0\n    for distance, record_id, b in chosen:\n        total += b\n        emit('sum', {'id': record_id, 'total': total})\n    estimate = total / len(chosen)\n    emit('result', {'estimate': estimate})\n    return {'estimate': estimate, 'ids': [r[1] for r in chosen]}\n\n\ndef pca(angle=-45, emit=lambda *args: None):\n    points = [[2, 0], [0, 2], [3, 1], [1, 3]]\n    n = len(points)\n    emit('input', {'points': points})\n    mean = [sum(q[j] for q in points) / n for j in range(2)]\n    emit('mean', {'mean': mean})\n    centered = []\n    for i, q in enumerate(points):\n        centered.append([q[j] - mean[j] for j in range(2)])\n        emit('center', {'id': i, 'centered': centered[-1]})\n    outer_sum = [[0.0, 0.0], [0.0, 0.0]]\n    for i, q in enumerate(centered):\n        for a in range(2):\n            for b in range(2):\n                outer_sum[a][b] += q[a] * q[b]\n        emit('outer', {'id': i, 'sum': [row[:] for row in outer_sum]})\n    covariance = [[v / (n - 1) for v in row] for row in outer_sum]\n    emit('covariance', {'covariance': covariance})\n    a, b, c = covariance[0][0], covariance[0][1], covariance[1][1]\n    delta = math.sqrt((a - c) ** 2 + 4 * b * b)\n    eigenvalues = [(a + c + delta) / 2, (a + c - delta) / 2]\n    emit('eigen', {'eigenvalues': eigenvalues})\n    # 本例 b 非零；显式归一化二维特征向量。\n    axis = [b, eigenvalues[0] - a]\n    norm = math.hypot(*axis)\n    axis = [-v / norm for v in axis]  # 取第一个分量为正的符号\n    emit('axis', {'axis': axis})\n    w = [math.cos(math.radians(angle)), math.sin(math.radians(angle))]\n    emit('direction', {'angle': angle, 'w': w})\n    scores = []\n    for i, q in enumerate(centered):\n        scores.append(sum(q[j] * w[j] for j in range(2)))\n        emit('project', {'id': i, 'score': scores[-1]})\n    reconstruction, sse = [], 0\n    for i, z in enumerate(scores):\n        r = [mean[j] + z * w[j] for j in range(2)]\n        reconstruction.append(r)\n        error = sum((points[i][j] - r[j]) ** 2 for j in range(2))\n        sse += error\n        emit('reconstruct', {'id': i, 'point': r, 'error': error, 'sse': sse})\n    ratio = sum(z * z for z in scores) / (n - 1) / sum(eigenvalues)\n    emit('result', {'ratio': ratio, 'sse': sse})\n    return {'scores': scores, 'reconstruction': reconstruction, 'sse': sse,\n            'ratio': ratio, 'covariance': covariance, 'eigenvalues': eigenvalues}\n\n\ndef matching(transition=8, emit=lambda *args: None):\n    emission = [0, 2]\n    values, back = [emission[:]], [[None, None]]\n    emit('input', {'emission': emission, 'transition': transition})\n    emit('initialize', {'values': values[0]})\n    for t in range(1, 3):\n        row, predecessors = [], []\n        for j in range(2):\n            candidates = []\n            for i in range(2):\n                cost = 0 if i == j == 1 else transition\n                candidates.append(values[t - 1][i] + cost)\n                emit('candidate', {'t': t, 'j': j, 'i': i, 'candidate': candidates[-1]})\n            previous = min(range(2), key=lambda i: (candidates[i], i))\n            row.append(emission[j] + candidates[previous])\n            predecessors.append(previous)\n            emit('update', {'t': t, 'j': j, 'value': row[-1], 'previous': previous})\n        values.append(row)\n        back.append(predecessors)\n    end = min(range(2), key=lambda j: (values[-1][j], j))\n    path = [end]\n    emit('terminal', {'end': end, 'cost': values[-1][end]})\n    for t in range(2, 0, -1):\n        end = back[t][end]\n        path.insert(0, end)\n        emit('backtrack', {'t': t - 1, 'state': end})\n    emit('result', {'path': path, 'cost': min(values[-1])})\n    return {'path': path, 'cost': min(values[-1]), 'values': values, 'back': back}\n\n\ndef rdp(epsilon=.6, emit=lambda *args: None):\n    points = [[0, 0], [1, .2], [2, 2], [3, .2], [4, 0]]\n    keep = {0, len(points) - 1}\n    emit('input', {'points': points, 'epsilon': epsilon})\n\n    def visit(a, b, depth=0):\n        emit('enter', {'a': a, 'b': b, 'depth': depth})\n        if b - a <= 1:\n            emit('leaf', {'a': a, 'b': b})\n            return\n        dx, dy = points[b][0] - points[a][0], points[b][1] - points[a][1]\n        maximum, index = -1, None\n        for i in range(a + 1, b):\n            denominator = dx * dx + dy * dy\n            u = ((points[i][0] - points[a][0]) * dx + (points[i][1] - points[a][1]) * dy) / denominator if denominator else 0\n            u = max(0, min(1, u))\n            foot = [points[a][0] + u * dx, points[a][1] + u * dy]\n            distance = math.hypot(points[i][0] - foot[0], points[i][1] - foot[1])\n            if distance > maximum:\n                maximum, index = distance, i  # 相同距离保留较早点\n            emit('distance', {'a': a, 'b': b, 'id': i, 'u': u, 'foot': foot, 'distance': distance})\n        split = maximum > epsilon\n        emit('decision', {'a': a, 'b': b, 'id': index, 'maximum': maximum, 'split': split})\n        if split:\n            keep.add(index)\n            visit(a, index, depth + 1)\n            visit(index, b, depth + 1)\n        emit('return', {'a': a, 'b': b, 'keep': sorted(keep)})\n\n    visit(0, len(points) - 1)\n    emit('result', {'keep': sorted(keep)})\n    return {'keep': sorted(keep)}\n\n\ndef gps(speed=12, gap=120, emit=lambda *args: None):\n    with (Path(__file__).parent / 'data/gps_raw.csv').open(encoding='utf-8-sig') as f:\n        rows = [dict(r, source_id=i + 1) for i, r in enumerate(csv.DictReader(f))]\n    emit('input', {'count': len(rows)})\n    rows.sort(key=lambda r: (r['object_id'], r['time'], r['source_id']))\n    emit('sort', {'ids': [r['source_id'] for r in rows]})\n    seen, last, segments = set(), {}, {}\n    kept, rejected, duplicates = [], [], []\n    seconds = lambda t: sum(int(v) * u for v, u in zip(t.split(':'), [3600, 60, 1]))\n    for r in rows:\n        source = r['source_id']\n        key = (r['object_id'], r['time'], float(r['x_m']), float(r['y_m']))\n        duplicate = key in seen\n        emit('duplicate', {'id': source, 'duplicate': duplicate})\n        if duplicate:\n            duplicates.append(source)\n            continue\n        seen.add(key)\n        previous = last.get(r['object_id'])\n        dt = seconds(r['time']) - seconds(previous['time']) if previous else None\n        distance = math.hypot(float(r['x_m']) - float(previous['x_m']), float(r['y_m']) - float(previous['y_m'])) if previous else None\n        v = distance / dt if previous and dt > 0 else (math.inf if previous else 0)\n        emit('speed', {'id': source, 'previous': previous['source_id'] if previous else None,\n                       'dt': dt, 'distance': distance, 'speed': v if math.isfinite(v) else None})\n        accepted = v <= speed\n        if accepted:\n            segment = segments.get(r['object_id'], 1) + int(previous is not None and dt > gap)\n            segments[r['object_id']] = segment\n            last[r['object_id']] = r\n            kept.append(source)\n        else:\n            rejected.append(source)\n        emit('decision', {'id': source, 'accepted': accepted, 'last': last.get(r['object_id'], {}).get('source_id'),\n                          'segment': segments.get(r['object_id'], 1)})\n    result = {'kept': kept, 'rejected': rejected, 'duplicates': duplicates}\n    emit('result', result)\n    return result\n\n\ndef impute(method='mean', emit=lambda *args: None):\n    observed = [2, 3, 4, 100]\n    emit('input', {'observed': observed, 'method': method})\n    ordered = sorted(observed)\n    emit('sort', {'ordered': ordered})\n    total = 0\n    for i, value in enumerate(observed):\n        total += value\n        emit('sum', {'id': i, 'value': value, 'total': total})\n    mean = total / len(observed)\n    median = (ordered[1] + ordered[2]) / 2\n    emit('statistics', {'mean': mean, 'median': median})\n    estimate = mean if method == 'mean' else median\n    emit('result', {'estimate': estimate, 'filled': observed + [estimate]})\n    return {'estimate': estimate, 'filled': observed + [estimate]}\n\n\ndef signal(window=3, z=3, emit=lambda *args: None):\n    raw = [10, 11, 10, 12, 11, 50, 12, 11, 10, 12, 11]\n    emit('input', {'raw': raw, 'window': window})\n    smoothed = []\n    for i in range(len(raw)):\n        values = raw[max(0, i-window+1):i+1]\n        emit('window', {'id': i, 'values': values})\n        average = sum(values) / len(values)\n        smoothed.append(average)\n        emit('average', {'id': i, 'average': average})\n    score = (68 - 50) / 5  # 独立参考算例，非从上方序列拟合\n    emit('zscore', {'value': 68, 'mean': 50, 'std': 5, 'score': score})\n    flag = abs(score) > z\n    emit('decision', {'score': score, 'threshold': z, 'flag': flag})\n    emit('result', {'smoothed': smoothed, 'score': score, 'flag': flag})\n    return {'smoothed': smoothed, 'score': score, 'flag': flag}\n\n\ndef scale(leak='train', emit=lambda *args: None):\n    values = [10, 20, 30, 40]\n    emit('input', {'values': values, 'leak': leak})\n    fit = values if leak == 'all' else values[:3]\n    low, high = min(fit), max(fit)\n    emit('fit', {'fit': fit, 'low': low, 'high': high})\n    scaled = []\n    for i, value in enumerate(values):\n        transformed = (value-low)/(high-low)\n        scaled.append(transformed)\n        emit('transform', {'id': i, 'value': value, 'scaled': transformed})\n    mean = sum(fit)/len(fit)\n    std = math.sqrt(sum((v-mean)**2 for v in fit)/len(fit))\n    emit('standardize', {'mean': mean, 'std': std, 'test_z': (40-mean)/std})\n    codes = []\n    for category in ['A', 'B']:\n        code = [int(category == c) for c in ['A', 'B']]\n        codes.append(code)\n        emit('encode', {'category': category, 'code': code})\n    emit('result', {'scaled': scaled, 'test_z': (40-mean)/std, 'codes': codes})\n    return {'scaled': scaled, 'test_z': (40-mean)/std, 'codes': codes}\n\n\ndef interpolate(alpha=.5, gap=120, emit=lambda *args: None):\n    start, end = [800, 200], [930, 240]\n    emit('input', {'start': start, 'end': end})\n    interval = 3 * 60  # 08:07 - 08:04，单位秒\n    emit('interval', {'interval': interval})\n    split = interval > gap\n    emit('decision', {'interval': interval, 'gap': gap, 'split': split})\n    emit('weight', {'alpha': alpha, 'elapsed': interval*alpha})\n    estimate = []\n    for j in range(2):\n        value = (1-alpha)*start[j] + alpha*end[j]\n        estimate.append(value)\n        emit('coordinate', {'id': j, 'value': value})\n    emit('result', {'estimate': estimate, 'split': split})\n    return {'estimate': estimate, 'split': split}\n\n\ndef aggregate(cell=250, window=180, count='points', emit=lambda *args: None):\n    # 固定使用12 m/s、120秒的清洗结果，独立于GPS页当前滑块。\n    kept = gps(12, 120)['kept']\n    with (Path(__file__).parent / 'data/gps_raw.csv').open(encoding='utf-8-sig') as f:\n        rows = [dict(r, source_id=i+1) for i, r in enumerate(csv.DictReader(f))]\n    rows = sorted((r for r in rows if r['source_id'] in kept), key=lambda r: (r['object_id'],r['time'],r['source_id']))\n    emit('input', {'count': len(rows), 'cell': cell, 'window': window})\n    groups = {}\n    for r in rows:\n        gx, gy = math.floor(float(r['x_m'])/cell), math.floor(float(r['y_m'])/cell)\n        h, m, s = map(int, r['time'].split(':'))\n        tw = math.floor((h*3600+m*60+s)/window)\n        key = f'{gx}/{gy}/{tw}'\n        emit('assign', {'id': r['source_id'], 'gx': gx, 'gy': gy, 'tw': tw, 'key': key})\n        group = groups.setdefault(key, {'points': 0, 'devices': set()})\n        group['points'] += 1\n        group['devices'].add(r['object_id'])\n        emit('increment', {'key': key, 'points': group['points'], 'devices': len(group['devices'])})\n    output = [{'key': key, 'points': g['points'], 'devices': len(g['devices'])} for key, g in groups.items()]\n    emit('result', {'groups': output, 'count': count})\n    return {'groups': output, 'count': count}\n\n\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('method', choices=['knn', 'pca', 'matching', 'rdp', 'gps', 'impute', 'signal', 'scale', 'interpolate', 'aggregate'])\n    parser.add_argument('--k', type=int, default=2)\n    parser.add_argument('--query', type=float, default=1)\n    parser.add_argument('--angle', type=float, default=-45)\n    parser.add_argument('--transition', type=float, default=8)\n    parser.add_argument('--epsilon', type=float, default=.6)\n    parser.add_argument('--speed', type=float, default=12)\n    parser.add_argument('--gap', type=float, default=120)\n    parser.add_argument('--method', choices=['mean', 'median'], default='mean', dest='impute_method')\n    parser.add_argument('--window', type=int, default=None)\n    parser.add_argument('--z', type=float, default=3)\n    parser.add_argument('--leak', choices=['train', 'all'], default='train')\n    parser.add_argument('--alpha', type=float, default=.5)\n    parser.add_argument('--cell', type=float, default=250)\n    parser.add_argument('--count', choices=['points','devices'], default='points')\n    args = parser.parse_args()\n    numeric = [args.query, args.angle, args.transition, args.epsilon, args.speed, args.gap, args.z, args.alpha, args.cell]\n    if not all(math.isfinite(v) for v in numeric) or not 1 <= args.k <= 3 or min(args.transition, args.epsilon, args.speed, args.gap) < 0:\n        parser.error('参数须有限；K在1—3之间；代价、容差、速度和间隔非负')\n    params = {'knn': {'query': args.query, 'k': args.k}, 'pca': {'angle': args.angle},\n              'matching': {'transition': args.transition}, 'rdp': {'epsilon': args.epsilon},\n              'gps': {'speed': args.speed, 'gap': args.gap}}.get(args.method, {})\n    if args.method == 'impute': params = {'method': args.impute_method}\n    elif args.method == 'signal': params = {'window': args.window or 3, 'z': args.z}\n    elif args.method == 'scale': params = {'leak': args.leak}\n    elif args.method == 'interpolate': params = {'alpha': args.alpha, 'gap': args.gap}\n    elif args.method == 'aggregate': params = {'cell': args.cell, 'window': args.window or 180, 'count': args.count}\n    if args.window is not None and args.window <= 0 or args.cell <= 0 or not 0 <= args.alpha <= 1:\n        parser.error('窗口与格网边长须为正，alpha在0—1之间')\n    events = []\n    output = globals()[args.method](**params, emit=lambda action, state: events.append({'action': action, 'state': state}))\n    print(json.dumps({'steps': events, 'result': output}, ensure_ascii=False, indent=2, allow_nan=False))\n";
+const GPS_CSV="object_id,time,x_m,y_m,teaching_flag\r\nbike-07,08:00:00,100,120,ok\r\nbike-07,08:00:30,190,120,ok\r\nbike-07,08:01:00,280,130,ok\r\nbike-07,08:01:00,280,130,duplicate\r\nbike-07,08:02:00,460,150,ok\r\nbike-07,08:01:30,370,140,late_arrival\r\nbike-07,08:02:30,560,160,ok\r\nbike-07,08:03:00,1240,910,jump\r\nbike-07,08:03:30,720,180,ok\r\nbike-07,08:04:00,800,200,ok\r\nbike-07,08:07:00,930,240,gap_after\r\nbike-07,08:07:30,980,250,ok\r\n";
+'use strict';
+const TRACE_METHODS={0:'impute',1:'knn',2:'signal',3:'scale',4:'pca',5:'gps',6:'interpolate',7:'matching',8:'rdp',9:'aggregate'};
+const TRACE_TITLES={statistics:'计算均值与中位数',window:'取后向窗口',average:'计算窗口均值',zscore:'计算Z分数',fit:'拟合缩放参数',transform:'变换一个样本',standardize:'计算标准化参数',encode:'编码一个类别',interval:'计算时间间隔',weight:'确定时间权重',coordinate:'计算一个坐标',assign:'确定格网与时间窗',increment:'更新计数与设备集合',input:'读取输入',distance:'逐项计算距离',sort:'排序',select:'选择有效供体',sum:'累加供体属性',result:'核对最终结果',mean:'计算列均值',center:'中心化一个样本',outer:'累加一个外积',covariance:'除以 n−1 得到协方差',eigen:'求二维特征值',axis:'归一化第一主轴',direction:'设置比较方向',project:'投影一个样本',reconstruct:'重构与累加残差',initialize:'初始化第一列',candidate:'计算一个前驱候选',update:'选择最小值并保存前驱',terminal:'选择终点',backtrack:'回溯一步',enter:'进入递归区间',leaf:'相邻端点，结束递归',decision:'比较阈值并决策',return:'返回父区间',duplicate:'检查一条重复键',speed:'计算与上一保留点的速度'};
+const esc=v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const num=v=>v===null||v===undefined?'—':typeof v==='number'?f(v,4):Array.isArray(v)?'['+v.map(num).join(', ')+']':esc(v);
+let traceCache=null,traceKey='',predicting=false,compareSnapshot=null;
+function traceData(){const method=TRACE_METHODS[active],key=JSON.stringify([method,p]);if(key!==traceKey){traceKey=key;traceCache=computeTrace(method,p,DATA.raw)}return traceCache}
+function detailTitle(e){const s=e.state;return (TRACE_TITLES[e.action]||e.action)+(s.id!==undefined?` · ${['pca','impute','signal','scale'].includes(TRACE_METHODS[active])?'样本 '+(s.id+1):TRACE_METHODS[active]==='interpolate'?(s.id===0?'x坐标':'y坐标'):'#'+s.id}`:'')+(s.t!==undefined?` · t=${s.t+1}${s.j!==undefined?' / '+(s.j?'B':'A'):''}`:'')+(s.a!==undefined?` · [p${s.a},p${s.b}]`:'')}
+function traceTable(headers,rows,highlight=-1){return `<div class="table-scroll"><table class="trace-table"><thead><tr>${headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map((row,i)=>`<tr class="${i===highlight?'current-row':''}">${row.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
+function accumulated(events){const a={distances:{},chosen:[],scores:{},centered:{},rec:{},values:[[null,null],[null,null],[null,null]],back:[[null,null],[null,null],[null,null]],keep:[0,4],gps:{},gpsOrder:[],tree:[],path:{},basic:{},rows:{},windows:{},groups:{}};
+ for(const e of events){let s=e.state;a.basic[e.action]=s;if(['sum','average','transform','coordinate'].includes(e.action))a.rows[s.id]=s;if(e.action==='window')a.windows[s.id]=s.values;if(e.action==='increment')a.groups[s.key]=s;switch(e.action){case'distance':a.distances[s.id]=s.distance;break;case'select':a.chosen=s.ids;break;case'center':a.centered[s.id]=s.centered;break;case'project':a.scores[s.id]=s.score;break;case'reconstruct':a.rec[s.id]=s.point;break;case'initialize':a.values[0]=s.values;break;case'update':a.values[s.t][s.j]=s.value;a.back[s.t][s.j]=s.previous;break;case'terminal':a.path[2]=s.end;break;case'backtrack':a.path[s.t]=s.state;break;case'enter':a.tree.push({a:s.a,b:s.b,depth:s.depth,status:'审查中'});break;case'decision':if(s.a!==undefined){let node=[...a.tree].reverse().find(n=>n.a===s.a&&n.b===s.b);if(node)node.status=s.split?'分裂 p'+s.id:'不分裂';if(s.split)a.keep.push(s.id)}else if(s.id!==undefined){a.gps[s.id]={...a.gps[s.id],...s,status:s.accepted?'保留':'拒绝'}}break;case'leaf':{let node=[...a.tree].reverse().find(n=>n.a===s.a&&n.b===s.b);if(node)node.status='相邻端点';break}case'duplicate':if(!a.gpsOrder.includes(s.id))a.gpsOrder.push(s.id);a.gps[s.id]={...s,status:s.duplicate?'重复':'待计算'};break;case'speed':a.gps[s.id]={...a.gps[s.id],...s};break;case'result':if(s.keep)a.keep=s.keep;break}}
+ a.keep=[...new Set(a.keep)].sort((a,b)=>a-b);return a;
+}
+function explanation(method,e,a){const s=e.state;if(['impute','signal','scale','interpolate','aggregate'].includes(method))return basicExplanation(method,e,a);
+ if(method==='knn'){
+  const donor=[[1,0,10],[2,2,14],[3,6,40]].find(r=>r[0]===s.id);
+  if(e.action==='distance')return `d(q,r${s.id}) = |${num(p.query)} − ${donor[1]}| = ${num(s.distance)}。B列缺失，不参与距离。`;
+  if(e.action==='sort')return `按 (距离, ID) 排序：${s.order.map(i=>'r'+i).join(' → ')}；等距时选编号较小者。`;
+  if(e.action==='select')return `N_K = {${s.ids.map(i=>'r'+i).join(', ')}}。本例全部供体的B有效。`;
+  if(e.action==='sum')return `加入 r${s.id} 的 B=${donor[2]}；累计 B 总和 = ${num(s.total)}。`;
+  if(e.action==='result')return `B̂ = ΣB / K = ${num(s.estimate*p.k)} / ${p.k} = ${num(s.estimate)}。这是估计值。`;
+  return `查询 A=${num(p.query)}，B=?；K=${p.k}。逐个算距离后才允许选邻居。`;
+ }
+ if(method==='matching'){
+  if(e.action==='candidate'){let prior=a.values[s.t-1][s.i],c=s.i===1&&s.j===1?0:p.transition;return `前驱 ${s.i?'B':'A'} → ${s.j?'B':'A'}：V${s.t}(${s.i?'B':'A'}) + C = ${num(prior)} + ${c} = ${num(s.candidate)}。尚未加当前观测代价。`}
+  if(e.action==='update'){const candidates=a.values[s.t-1].map((v,i)=>v+(i===1&&s.j===1?0:p.transition));return `V${s.t+1}(${s.j?'B':'A'}) = ${s.j?2:0} + min(${candidates.map(num).join(', ')}) = ${num(s.value)}；保存前驱 ${s.previous?'B':'A'}。平局取A。`}
+  if(e.action==='backtrack')return `沿已保存前驱返回 t=${s.t+1} 的 ${s.state?'B':'A'}；回溯不会重新选择局部最近道路。`;
+  if(e.action==='terminal')return `末列最小累计代价 ${s.cost}，终点选 ${s.end?'B':'A'}。下一步才回溯。`;
+  if(e.action==='result')return `最优路径 ${s.path.map(i=>i?'B':'A').join('')}，代价 ${s.cost}；局部AAA代价 ${2*p.transition}。`;
+  return e.action==='initialize'?'第一列 V₁ = E₁ = [0, 2]；前驱为空。':'每时刻候选A/B；E=[0,2]；BB转移为0，其他转移为参数值。节点格不是道路地图。';
+ }
+ if(method==='rdp'){
+  if(e.action==='distance'){const pts=[[0,0],[1,.2],[2,2],[3,.2],[4,0]],q=pts[s.id],start=pts[s.a],end=pts[s.b],dx=end[0]-start[0],dy=end[1]-start[1];return `u = clamp([(${q[0]}−${start[0]})×${dx}+(${q[1]}−${start[1]})×${dy}]/(${dx}²+${dy}²),0,1) = ${num(s.u)}；垂足 ${num(s.foot)}；d=√[(${q[0]}−${num(s.foot[0])})²+(${q[1]}−${num(s.foot[1])})²]=${num(s.distance)} m。`;}
+  if(e.action==='decision')return `最大偏差来自 p${s.id}：${num(s.maximum)} ${s.split?'>':'≤'} ε=${num(p.epsilon)}。${s.split?'保留该点，先递归左侧，再处理右侧。':'不再分裂，由端点线段近似当前区间。'}`;
+  if(e.action==='enter')return `进入 [p${s.a},p${s.b}]，递归深度 ${s.depth}。当前区间的距离需要重新计算。`;
+  if(e.action==='return')return `完成 [p${s.a},p${s.b}] 并返回；当前保留点 ${s.keep.map(i=>'p'+i).join(', ')}。`;
+  if(e.action==='result')return `最终保留 ${s.keep.map(i=>'p'+i).join(', ')}。容差约束几何误差，不保证保留速度、时间或停留语义。`;
+  return e.action==='leaf'?'区间内没有中间点，返回父区间。':`五个点，容差 ε=${p.epsilon} m；端点p0、p4始终保留。`;
+ }
+ if(method==='gps'){
+  const r=DATA.raw.find(r=>r.source_id===s.id);
+  if(e.action==='duplicate')return `#${s.id} 键=(${r.object_id}, ${r.time}, ${r.x_m}, ${r.y_m})；${s.duplicate?'已出现，记为重复，不再参与速度计算。':'首次出现，下一步计算速度。'}`;
+  if(e.action==='speed'){if(s.previous===null)return `#${s.id} 是本对象首条有效候选，无前驱；按初始速度0处理。`;const prev=DATA.raw.find(r=>r.source_id===s.previous);return `上一保留点 #${s.previous}（${prev.time}）；Δt=${s.dt} s；位移=√[(${r.x_m}−${prev.x_m})²+(${r.y_m}−${prev.y_m})²]=${num(s.distance)} m；v=${num(s.distance)}/${s.dt}=${s.speed===null?'时间冲突':num(s.speed)+' m/s'}。`}
+  if(e.action==='decision')return `${s.accepted?'通过速度约束，保留':'超出速度阈值或时间冲突，拒绝'} #${s.id}；last 更新/保持为 #${s.last}。${s.accepted?'当前段号 '+s.segment+'；仅间隔 > '+p.gap+' s 才另起一段。':'下一候选仍与 #'+s.last+' 比较，而非刚拒绝的点。'}`;
+  if(e.action==='sort')return `按对象、观测时间、来源编号排序：${s.ids.map(i=>'#'+i).join(' → ')}。`;
+  if(e.action==='result')return `原始12条 = 重复${s.duplicates.length} + 拒绝${s.rejected.length} + 保留${s.kept.length}。原始记录不修改。`;
+  return '读取12条冻结教学GPS记录，先排序，再对每条检查重复、计算速度并决策。';
+ }
+ if(method==='pca'){
+  const points=[[2,0],[0,2],[3,1],[1,3]];
+  if(e.action==='mean')return `μ₁=(2+0+3+1)/4=1.5；μ₂=(0+2+1+3)/4=1.5。`;
+  if(e.action==='center')return `x${s.id+1} − μ = ${num(points[s.id])} − [1.5, 1.5] = ${num(s.centered)}。`;
+  if(e.action==='outer'){const q=a.centered[s.id];return `x_c=${num(q)}；外积=[(${num(q[0])})², (${num(q[0])})×(${num(q[1])}); (${num(q[1])})×(${num(q[0])}), (${num(q[1])})²]=${num([[q[0]*q[0],q[0]*q[1]],[q[1]*q[0],q[1]*q[1]]])}；累加后Σ外积=${num(s.sum)}。`;}
+  if(e.action==='covariance')return `S = Σ(x_c x_cᵀ)/(4−1) = ${num(s.covariance)}。`;
+  if(e.action==='eigen')return `a=c=5/3，b=−1；λ±=(a+c ± √[(a−c)²+4b²])/2=(10/3 ± 2)/2；得到 ${num(s.eigenvalues)}。`;
+  if(e.action==='axis')return `[b,λ₁−a]=[−1,1]；长度√2；归一化并翻转符号，w₁=${num(s.axis)}。`;
+  if(e.action==='direction')return `当前方向 w=[cos(${p.angle}°),sin(${p.angle}°)]=${num(s.w)}；−45°为本例第一主轴，其余角度作方向对照。`;
+  if(e.action==='project'){let w=[Math.cos(p.angle*Math.PI/180),Math.sin(p.angle*Math.PI/180)],q=a.centered[s.id];return `z${s.id+1}=(${num(q[0])})×(${num(w[0])})+(${num(q[1])})×(${num(w[1])})=${num(s.score)}。`}
+  if(e.action==='reconstruct')return `x̂${s.id+1}=μ+z${s.id+1}w=${num(s.point)}；本点平方残差=${num(s.error)}；累计SSE=${num(s.sse)}。`;
+  if(e.action==='result')return `当前方向保留方差占比=${num(s.ratio*100)}%；总重构SSE=${num(s.sse)}。方差占比不是预测准确率。`;
+  return '四个二维样本，两列视作同尺度；先中心化，后计算协方差。';
+ }
+}
+function plotTrace(method,e,a){if(['impute','signal','scale','interpolate','aggregate'].includes(method))return basicPlot(method,e,a);let body=gridBg(),s=e.state;
+ if(method==='matching'){
+  for(let t=0;t<3;t++)for(let j=0;j<2;j++){let x=150+t*260,y=110+j*165;if(t<2)for(let k=0;k<2;k++){let now=e.action==='candidate'&&s.t===t+1&&s.i===j&&s.j===k,route=a.path[t]===j&&a.path[t+1]===k;body+=line(x+30,y,x+230,110+k*165,now?C.o:route?C.a:C.l,now||route?'':'5 5',now||route?5:1)}body+=circle(x,y,30,a.path[t]===j?C.a:C.b)+text(x-10,y+7,a.values[t][j]===null?'?':num(a.values[t][j]),'big','var(--bg)')+text(x-45,y-43,`${j?'B':'A'} · E=${j?2:0}`)+text(x-60,y+55,a.back[t][j]===null?'前驱 —':'前驱 '+(a.back[t][j]?'B':'A'),'tiny')}
+ }else if(method==='knn'){
+  let xx=v=>100+v*100;body=line(70,160,790,160)+text(65,35,'距离计算只使用 A；B缺失，不参与比较');for(const [id,x,b] of [[1,0,10],[2,2,14],[3,6,40]]){let current=s.id===id;body+=circle(xx(x),160,13,current?C.o:a.chosen.includes(id)?C.a:C.b)+text(xx(x)-20,200,`r${id}`)+text(xx(x)-30,230,`B=${b}`);if(a.distances[id]!==undefined)body+=line(xx(p.query),90,xx(x),145,current?C.o:C.l,'4 4')+text(xx(x)-25,275,`d=${num(a.distances[id])}`)}body+=circle(xx(p.query),80,12,C.o)+text(xx(p.query)-30,60,`q: A=${num(p.query)}`)+text(80,345,e.action==='result'?`B̂ = ${num(s.estimate)}`:'B̂ = ?（等待累计完成）','big');
+ }else if(method==='pca'){
+  const pts=[[2,0],[0,2],[3,1],[1,3]],xy=q=>[300+(q[0]-1.5)*85,190-(q[1]-1.5)*85],angle=p.angle*Math.PI/180,w=[Math.cos(angle),Math.sin(angle)];body=line(65,190,540,190)+line(300,25,300,350);if(['direction','project','reconstruct','result'].includes(e.action))body+=line(300-w[0]*185,190+w[1]*185,300+w[0]*185,190-w[1]*185,C.a,'',3);pts.forEach((q,i)=>{let [x,y]=xy(q);if(a.scores[i]!==undefined){let z=a.scores[i],r=[1.5+z*w[0],1.5+z*w[1]],[rx,ry]=xy(r);body+=line(x,y,rx,ry,C.o,'5 5')+circle(rx,ry,8,a.rec[i]?C.a:C.o)+circle(690,190-z*65,7,C.o)+text(710,190-z*65+(i<2?-9:18),`z${i+1}=${num(z)}`,'tiny')}body+=circle(x,y,10,s.id===i?C.o:C.b)+text(x+12,y-10,'x'+(i+1))});body+=text(65,25,'二维样本 → 逐点投影与重构')+text(610,25,'一维投影');
+ }else if(method==='rdp'){
+  const pts=[[0,0],[1,.2],[2,2],[3,.2],[4,0]],xy=q=>[100+q[0]*155,310-q[1]*110];body=poly(pts.map(xy),C.m,'5 5');if(s.a!==undefined)body+=line(...xy(pts[s.a]),...xy(pts[s.b]),C.o,'',4);if(s.foot)body+=line(...xy(pts[s.id]),...xy(s.foot),C.r,'5 5')+circle(...xy(s.foot),5,C.r);if(e.action==='result')body+=poly(a.keep.map(i=>xy(pts[i])),C.a,'',5);pts.forEach((q,i)=>body+=circle(...xy(q),a.keep.includes(i)?12:8,s.id===i?C.o:a.keep.includes(i)?C.a:C.b)+text(xy(q)[0]-8,xy(q)[1]+28,'p'+i));body+=text(65,30,'当前区间橙色 · 已保留点绿色 · 距离连线红色');
+ }else{
+  const xy=q=>[70+q.x_m*.53,330-q.y_m*.29];const inspected=Object.keys(a.gps).map(Number),kept=DATA.raw.filter(r=>a.gps[r.source_id]?.status==='保留');let by={};for(const q of kept){const k=q.object_id+'/'+a.gps[q.source_id].segment;(by[k]??=[]).push(q)}for(const group of Object.values(by))body+=poly(group.map(xy),C.a);for(const q of DATA.raw){let status=a.gps[q.source_id]?.status;if(status==='重复'){const [cx,cy]=xy(q);body+=`<circle cx="${cx}" cy="${cy}" r="11" fill="none" stroke="${s.id===q.source_id?C.o:C.m}" stroke-width="2"/>`}else body+=circle(...xy(q),s.id===q.source_id?12:7,s.id===q.source_id?C.o:status==='保留'?C.a:status==='拒绝'?C.r:C.m);if(s.id===q.source_id)body+=text(Math.max(65,xy(q)[0]-30),Math.max(25,xy(q)[1]-20),'#'+q.source_id,'',C.o)}const prev=s.previous??(s.id!==undefined?a.gps[s.id]?.previous:null);if(prev!==null&&prev!==undefined){let q=DATA.raw.find(r=>r.source_id===s.id),r=DATA.raw.find(r=>r.source_id===prev);body+=line(...xy(r),...xy(q),C.o,'5 5',3)}body+=text(65,25,'灰：未决 · 橙：当前 · 绿：保留 · 红：拒绝；分段不连线');
+ }
+ return body;
+}
+function stateTable(method,e,a){
+ if(['impute','signal','scale','interpolate','aggregate'].includes(method))return basicTable(method,e,a);
+ if(method==='knn')return traceTable(['供体','A','B','距离','是否选中'],[[1,0,10],[2,2,14],[3,6,40]].map(([id,x,b])=>['r'+id,x,b,num(a.distances[id]),a.chosen.includes(id)?'✓':'—']),[1,2,3].indexOf(e.state.id));
+ if(method==='pca')return traceTable(['样本','原坐标','中心化','投影 z','重构'],[[2,0],[0,2],[3,1],[1,3]].map((q,i)=>['x'+(i+1),num(q),num(a.centered[i]),num(a.scores[i]),num(a.rec[i])]),e.state.id??-1);
+ if(method==='matching')return traceTable(['时刻','V(A)','前驱A','V(B)','前驱B'],a.values.map((r,t)=>['t='+ (t+1),num(r[0]),a.back[t][0]===null?'—':a.back[t][0]?'B':'A',num(r[1]),a.back[t][1]===null?'—':a.back[t][1]?'B':'A']));
+ if(method==='rdp')return traceTable(['递归区间','深度','状态'],a.tree.map(n=>['　'.repeat(n.depth)+`[p${n.a},p${n.b}]`,n.depth,n.status]),a.tree.findIndex(n=>n.a===e.state.a&&n.b===e.state.b));
+ return traceTable(['候选 / 时间','前一保留点','Δt s','位移 m','速度 m/s','判断 / 段号'],a.gpsOrder.map(id=>a.gps[id]).map(r=>{let q=DATA.raw.find(q=>q.source_id===r.id);return ['#'+r.id+' / '+esc(q.time),r.previous===null?'首点':r.previous===undefined?'—':'#'+r.previous,num(r.dt),num(r.distance),r.speed===null?'时间冲突':num(r.speed),r.status+(r.accepted?' / '+r.segment:'')] }),a.gpsOrder.indexOf(e.state.id));
+}
+function paintTrace(){const method=TRACE_METHODS[active],trace=traceData();step=Math.max(0,Math.min(step,trace.events.length-1));LABS[active].steps=trace.events.map(detailTitle);const e=trace.events[step],visible=predicting?Math.max(0,step-1):step,a=accumulated(trace.events.slice(0,visible+1)),displayEvent=trace.events[visible];
+ $('stage').innerHTML=svg(plotTrace(method,displayEvent,a));$('metrics').innerHTML=[['执行进度',`${step+1} / ${trace.events.length}`],['当前动作',TRACE_TITLES[e.action]],['最终答案',!predicting&&e.action==='result'?'已揭示':'未揭示']].map(([k,v])=>`<div class="metric"><small>${k}</small><strong>${esc(v)}</strong></div>`).join('');
+ $('calculation').textContent=predicting?'先预测本步会计算或更新哪个变量，再揭示结果。':explanation(method,e,a);$('explanation').textContent=predicting?'当前图表停留在上一步；点击「揭示本步」后继续。':explanation(method,e,a);$('stepTitle').textContent=detailTitle(e);$('stepNum').textContent=String(step+1).padStart(2,'0');$('stepLabel').textContent=`${step+1} / ${trace.events.length}`;
+ $('steps').innerHTML=trace.events.map((v,i)=>`<button aria-label="第${i+1}步 ${esc(detailTitle(v))}" title="${i+1}. ${esc(detailTitle(v))}" onclick="goStep(${i})" class="${i<=visible?'done':''}"></button>`).join('');$('prev').disabled=step===0;$('next').disabled=step===trace.events.length-1;
+ $('trace-panel').hidden=false;$('trace-table').innerHTML=stateTable(method,displayEvent,a);const currentRow=$('trace-table').querySelector('.current-row');if(currentRow){const box=$('trace-table').querySelector('.table-scroll');box.scrollTop=Math.max(0,currentRow.getBoundingClientRect().top-box.getBoundingClientRect().top+box.scrollTop-70);}$('trace-question').hidden=!predicting;$('trace-question').innerHTML=`<strong>请先判断：${esc(detailTitle(e))}</strong><p>依据当前表格和参数，下一步数值是多少？会保留、拒绝、分裂，还是更新前驱？</p><button onclick="revealTrace()">揭示本步计算</button>`;
+ if($('inline-calc'))$('inline-calc').textContent=$('calculation').textContent;
+ const code=CODE_BUNDLE[method],lineno=code.actions[e.action]||1;$('trace-code').innerHTML=code.lines.map((line,i)=>`<div class="code-line ${!predicting&&(code.highlights[e.action]||[lineno]).includes(i+1)?'highlight':''}" id="code-line-${i+1}"><span>${code.start+i}</span><code>${esc(line)}</code></div>`).join('');$('source-name').textContent=`teaching_algorithms.py · ${method}()（高亮计算与执行记录）`;
+ const highlighted=$('trace-code').querySelector('.highlight');if(highlighted)$('trace-code').scrollTop=Math.max(0,highlighted.offsetTop-70);
+ $('run-command').textContent=`python3 teaching_algorithms.py ${method} `+Object.entries(p).map(([k,v])=>`--${k} ${v}`).join(' ');$('trace-history').innerHTML=trace.events.slice(0,visible+1).map((v,i)=>`<button onclick="goStep(${i})" class="${i===step?'active':''}">${i+1}. ${esc(detailTitle(v))}</button>`).join('');
+ $('trace-comparison').innerHTML=compareSnapshot&&compareSnapshot.method===method?`<h3>参数修改前后对照</h3><p>修改前参数：${esc(JSON.stringify(compareSnapshot.parameters))}</p><pre>${esc(JSON.stringify(compareSnapshot.result,null,2))}</pre><p>当前参数：${esc(JSON.stringify(p))}</p><pre>${!predicting&&e.action==='result'?esc(JSON.stringify(trace.result,null,2)):'当前答案暂不揭示；运行到最后一步再比较。'}</pre>`:'<p>先运行到末步，再改变参数，可保留上次结果作对照。参数改变后从输入步骤重新开始。</p>';
+ result={lab:LABS[active].short,method,parameters:{...p},step:visible+1,current:displayEvent,history:trace.events.slice(0,visible+1),...(!predicting&&e.action==='result'?{result:trace.result}:{})};$('data').textContent=JSON.stringify(result,null,2);
+}
+const originalPlay=play;play=function(){predicting=false;originalPlay()};
+const originalPaint=paint,originalSelect=selectLab,originalSetParam=setParam,originalAdvance=advance,originalGoStep=goStep;
+paint=function(){if(TRACE_METHODS[active])paintTrace();else{if($('trace-panel'))$('trace-panel').hidden=true;originalPaint()}$('trace-tools').hidden=!TRACE_METHODS[active]};
+selectLab=function(i){predicting=false;traceKey='';compareSnapshot=null;originalSelect(i)};
+setParam=function(key,value){if(TRACE_METHODS[active]){const trace=traceData();if(step===trace.events.length-1&&!predicting)compareSnapshot={method:TRACE_METHODS[active],parameters:{...p},result:trace.result};stop();step=0;predicting=false;traceKey=''}originalSetParam(key,value)};
+advance=function(d){if(predicting&&d>0){revealTrace();return}predicting=false;originalAdvance(d)};goStep=function(i){predicting=false;originalGoStep(i)};
+function nextDecision(){stop();predicting=false;const tr=traceData();let i=step+1;while(i<tr.events.length-1&&!['select','update','decision','terminal','result','eigen','direction','statistics','fit','assign'].includes(tr.events[i].action))i++;goStep(Math.min(i,tr.events.length-1))}
+function predictNext(){stop();const tr=traceData();if(step<tr.events.length-1)step++;predicting=true;paint()}
+function revealTrace(){predicting=false;paint()}
+function downloadPython(){const blob=new Blob([PYTHON_SOURCE],{type:'text/x-python;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='teaching_algorithms.py';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function downloadGPS(){const blob=new Blob([GPS_CSV],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='gps_raw.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+
+function basicExplanation(method,e,a){let s=e.state,b=a.basic;
+ if(method==='impute'){if(e.action==='sort')return `观测排序为 ${num(s.ordered)}；中间两项为3和4。`;if(e.action==='sum')return `加入观测${s.id+1}：${s.value}，累计总和=${s.total}。`;if(e.action==='statistics')return `均值=109/4=${s.mean}；中位数=(3+4)/2=${s.median}。`;if(e.action==='result')return `选择${p.method==='mean'?'均值':'中位数'}填补，估计=${num(s.estimate)}；缺失标记仍保留。`;return '观测=[2,3,4,100]；第五项缺失。先比较极端值对不同估计的影响。'}
+ if(method==='signal'){if(e.action==='window')return `时刻${s.id+1}，后向窗口=${num(s.values)}；起始不足窗口时使用已有观测。`;if(e.action==='average')return `平滑值=窗口内总和 / 当前有效项数=${num(b.window.values.reduce((a,b)=>a+b,0))}/${b.window.values.length}=${num(s.average)}。`;if(e.action==='zscore')return `独立异常例：Z=(68−50)/5=${s.score}；参考μ和σ不是由上方序列估计。`;if(e.action==='decision')return `|${s.score}| ${s.flag?'>':'≤'} 阈值${s.threshold}；${s.flag?'标记为异常候选，等待核查':'不超阈值'}。`;if(e.action==='result')return `完成${s.smoothed.length}个后向均值；尖峰平滑后=${num(s.smoothed[5])}。窗口可能抹平真实信号。`;return `先逐窗口平滑，再用独立参考算例判断异常；w=${p.window}。`}
+ if(method==='scale'){if(e.action==='fit')return `拟合集=${num(s.fit)}；a=${s.low}，b=${s.high}。${p.leak==='all'?'这是包含测试值的泄漏对照。':'测试值40不参与拟合。'}`;if(e.action==='transform')return `${s.value} → (${s.value}−${b.fit.low})/(${b.fit.high}−${b.fit.low})=${num(s.scaled)}。`;if(e.action==='standardize')return `μ=${num(s.mean)}；σ=√[Σ(x−μ)²/n]=${num(s.std)}；测试Z=(40−μ)/σ=${num(s.test_z)}。`;if(e.action==='encode')return `已知类别顺序[A,B]：${s.category} → ${num(s.code)}。`;if(e.action==='result')return `四个Min-Max结果=${num(s.scaled)}。训练范围外的测试值可以大于1。`;return '前三个值为训练数据，40为测试值；先明确拟合参考集，再变换。'}
+ if(method==='interpolate'){if(e.action==='interval')return 'Δt = 08:07 − 08:04 = 3×60 = 180秒。';if(e.action==='decision')return `180 ${s.split?'>':'≤'} 分段阈值${s.gap}秒：${s.split?'分段，保留未知区间':'本规则不分段'}。`;if(e.action==='weight')return `α=${s.alpha}，目标时刻距起点${num(s.elapsed)}秒；α=(t−tₐ)/(tᵦ−tₐ)。`;if(e.action==='coordinate')return `${s.id===0?'x̂':'ŷ'}=(1−${p.alpha})×${s.id===0?800:200}+${p.alpha}×${s.id===0?930:240}=${num(s.value)}。`;if(e.action==='result')return `线性估计位置=${num(s.estimate)}，并非真实观测。插值和分段回答不同问题。`;return '两个端点分别为08:04 (800,200)、08:07 (930,240)。分段与事后插值分别演示。'}
+ if(method==='aggregate'){if(e.action==='assign'){const q=DATA.raw.find(q=>q.source_id===s.id);return `#${s.id}：gx=⌊${q.x_m}/${p.cell}⌋=${s.gx}，gy=⌊${q.y_m}/${p.cell}⌋=${s.gy}；时间窗=⌊${sec(q.time)}/${p.window}⌋=${s.tw}。键=${s.key}。`}if(e.action==='increment')return `组${s.key}：点计数更新为${s.points}；设备集合去重后为${s.devices}台。`;if(e.action==='result')return `得到${s.groups.length}个格网×时间组；统计字段为${p.count==='points'?'轨迹点数':'设备去重数'}。同一设备多次采样不会变成多台设备。`;return '固定使用12 m/s速度阈值、120秒分段得到的10个保留点；与GPS页当前滑块独立。'}
+}
+function basicTable(method,e,a){const b=a.basic;
+ if(method==='impute')return traceTable(['记录','观测值','累计和','缺失标记'],[2,3,4,100,null].map((v,i)=>['x'+(i+1),v===null?(b.result?num(b.result.estimate):'?'):v,num(a.rows[i]?.total),i===4?'1（原本缺失）':'0']));
+ if(method==='signal')return traceTable(['时刻','原始值','本步窗口','后向均值'],[10,11,10,12,11,50,12,11,10,12,11].map((v,i)=>[i+1,v,num(a.windows[i]),num(a.rows[i]?.average)]));
+ if(method==='scale')return traceTable(['记录','原始值','角色','Min-Max结果'],[10,20,30,40].map((v,i)=>[i+1,v,i===3?'测试':'训练',num(a.rows[i]?.scaled)]));
+ if(method==='interpolate')return traceTable(['坐标','起点','终点','估计'],[['x',800,930,num(a.rows[0]?.value)],['y',200,240,num(a.rows[1]?.value)]]);
+ return traceTable(['格网x/y/时间窗','点计数','设备去重数','当前统计值'],Object.entries(a.groups).map(([k,g])=>[esc(k),g.points,g.devices,p.count==='points'?g.points:g.devices]));
+}
+function basicPlot(method,e,a){let body=gridBg(),b=a.basic,s=e.state;
+ if(method==='impute'){const vals=[2,3,4,100,b.result?.estimate??null];vals.forEach((v,i)=>{const x=110+i*140;body+=rect(x,310-(v||0)*2.35,65,(v||0)*2.35,i===4?C.o:C.b)+text(x,290-(v||0)*2.35,v===null?'?':num(v))+text(x,345,'x'+(i+1))});return body}
+ if(method==='signal'){let raw=[10,11,10,12,11,50,12,11,10,12,11];const xy=(v,i)=>[80+i*66,260-v*3.6];body+=poly(raw.map(xy),C.m);let sm=Object.entries(a.rows).map(([id,r])=>xy(r.average,+id));if(sm.length)body+=poly(sm,C.a,'',4);if(s.id!==undefined)body+=circle(...xy(raw[s.id],s.id),11,C.o);body+=text(65,30,'灰：原始序列 · 绿：已计算的后向均值')+text(65,350,b.zscore?`独立Z算例：${b.zscore.score}；${b.decision?(b.decision.flag?'超阈值':'不超阈值'):'等待判断'}`:'逐窗口计算，未计算的平滑值不显示');return body}
+ if(method==='scale'){body=text(65,35,'上：原值，蓝色为训练，橙色为测试 · 下：已完成映射')+line(70,120,790,120)+line(70,270,790,270);[10,20,30,40].forEach((v,i)=>{body+=circle(120+i*190,120,10,i===3?C.o:C.b)+text(110+i*190,90,v);if(a.rows[i]){const xx=120+a.rows[i].scaled*370;body+=line(120+i*190,135,xx,250,C.l,'5 5')+circle(xx,270,10,i===3?C.o:C.a)+text(xx-10,305,num(a.rows[i].scaled))}});return body}
+ if(method==='interpolate'){body+=circle(170,260,12,C.b)+circle(660,105,12,C.b)+text(90,310,'08:04 (800,200)')+text(550,75,'08:07 (930,240)');if(b.decision&&!b.decision.split)body+=line(170,260,660,105,C.a);if(b.decision?.split)body+=text(300,200,'分段：保留未知区间','',C.o);if(b.result)body+=line(170,260,660,105,C.o,'5 5')+circle(170+490*p.alpha,260-155*p.alpha,13,C.o)+text(300,350,`事后估计 ${num(b.result.estimate)}`,'big');return body}
+ body=text(65,30,'逐组累计 · 每根柱表示一个格网×时间窗组');const groups=Object.entries(a.groups);groups.forEach(([key,g],i)=>{const value=p.count==='points'?g.points:g.devices,x=75+i*62;body+=rect(x,300-value*45,40,value*45,C.a)+text(x+12,280-value*45,value)+text(x,330,'g'+(i+1),'tiny')});if(s.id!==undefined)body+=text(65,365,`当前分组记录 #${s.id} → ${s.key}`,'tiny');return body;
+}
+
+let processView=true;
+const traceState=document.querySelector('.trace-state'),codePanel=document.querySelector('.code-panel'),traceLayout=document.querySelector('.trace-layout'),theory=document.querySelector('.theory');
+const inlineCalc=document.createElement('p');inlineCalc.id='inline-calc';inlineCalc.className='inline-calc';codePanel.insertBefore(inlineCalc,codePanel.children[1]);
+function arrangeTrace(){document.body.classList.toggle('process-view',processView);$('view-mode').textContent=processView?'切换理论视图':'切换过程视图';if(processView){document.querySelector('article').append(traceState);theory.append(codePanel);document.querySelector('article').insertBefore($('trace-question'),$('stage'))}else{traceLayout.append(traceState,codePanel);$('trace-panel').prepend($('trace-question'))}if(TRACE_METHODS[active])paint()}
+function toggleView(){processView=!processView;arrangeTrace()}
+arrangeTrace();selectLab(0);
+
+/* Reproducible synthetic benchmarks for the classroom comparisons. */
+function syntheticCases(seed=20261106) {
+  let state=seed>>>0;
+  const uniform=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/4294967296);
+  const noise=()=>Array.from({length:6},uniform).reduce((a,b)=>a+b,0)-3;
+  const sensors=Array.from({length:420},(_,i)=>{
+    const zone=i%3, flow=25+zone*18+14*noise(), length=1100+zone*480+220*noise();
+    const time=5+.15*flow+.004*length+1.6*noise();
+    return {id:i+1,zone,flow,length,time,missing:i%11===0 || (zone===2 && i%5===2),
+      observedTime:time+(i%53===0?45:0)};
+  });
+  const signal=Array.from({length:480},(_,i)=>{
+    const reference=24+5*Math.sin(i/23)+(i>=255?12:0), spike=i%47===19;
+    return {i,reference,spike,value:reference+2.3*noise()+(spike?21:0)};
+  });
+  const gps=[];
+  const add=(device,t,x,y,status)=>gps.push({id:gps.length+1,device,t,x,y,status});
+  for(let d=0;d<24;d++)for(let j=0;j<144;j++){
+    if(j>=54 && j<65 && d%3===0)continue;
+    const t=j*20, x=150+j*11+55*Math.sin(j/16+d),y=100+d*32+38*Math.sin(j/19+d);
+    const jump=(j+d*5)%79===26;
+    add(d,t,x+(jump?420:0),y+(jump?300:0),jump?'注入跳点':'正常');
+    if((j+d*3)%61===10)add(d,t,x+(jump?420:0),y+(jump?300:0),'注入重复');
+  }
+  const trajectory=Array.from({length:360},(_,i)=>[i*3.2,100+66*Math.sin(i/38)+22*Math.sin(i/9)+2*noise()]);
+  const missingRanges=[[42,48],[115,134],[200,212],[260,302]];
+  const observed=trajectory.map(([x,y],i)=>({t:i*10,x,y})).filter((_,i)=>!missingRanges.some(([a,b])=>i>=a&&i<=b));
+  const roadY=[140,178,236];
+  const matching=Array.from({length:42},(_,i)=>{
+    const truth=i<23?1:2;
+    return {i,x:40+i*18,y:roadY[truth]+noise()*22+(i%8===4?-29:0),truth};
+  });
+  return {seed,sensors,signal,gps,trajectory,observed,roadY,matching};
+}
+const CASES=syntheticCases();
+const mean=xs=>xs.reduce((sum,x)=>sum+x,0)/xs.length;
+const quantile=(sorted,q)=>{const i=(sorted.length-1)*q,k=Math.floor(i);return sorted[k]+(sorted[Math.min(k+1,sorted.length-1)]-sorted[k])*(i-k)};
+const deviation=xs=>{const m=mean(xs);return Math.sqrt(mean(xs.map(x=>(x-m)**2)))};
+const mae=(rows,estimate,truth)=>mean(rows.map((row,i)=>Math.abs(estimate[i]-truth(row))));
+function cleanCase(rows,speed,gap) {
+  const ordered=[...rows].sort((a,b)=>a.device-b.device || a.t-b.t || a.id-b.id);
+  const kept=[],rejected=[],duplicates=[],seen=new Set(),last=new Map();
+  for(const row of ordered){
+    const key=[row.device,row.t,row.x,row.y].join('/');
+    if(seen.has(key)){duplicates.push(row);continue}
+    seen.add(key);
+    const previous=last.get(row.device);
+    const delta=previous?row.t-previous.t:0;
+    const velocity=previous?(delta>0?Math.hypot(row.x-previous.x,row.y-previous.y)/delta:Infinity):0;
+    if(velocity>speed){rejected.push({...row,velocity:Number.isFinite(velocity)?velocity:null});continue}
+    const segment=previous?previous.segment+Number(delta>gap):1;
+    const item={...row,segment};
+    kept.push(item);
+    last.set(row.device,item);
+  }
+  return {kept,rejected,duplicates};
+}
+const CLEAN_REFERENCE=cleanCase(CASES.gps,12,120);
+
+function complexCase(method,p){
+  const {sensors,signal,gps,trajectory,observed,matching,roadY}=CASES;
+  if(method==='impute'||method==='knn'){
+    const reference=sensors.filter(q=>!q.missing),masked=sensors.filter(q=>q.missing);
+    const values=reference.map(q=>q.observedTime).sort((a,b)=>a-b);
+    const baseline=quantile(values,.5);
+    let estimates,neighbors=[];
+    if(method==='impute'){
+      estimates=masked.map(()=>p.method==='mean'?mean(values):baseline);
+    }else{
+      const columns=['flow','length'];
+      const scales=columns.map(k=>p.units==='raw'?1:deviation(reference.map(q=>q[k])));
+      neighbors=masked.map(q=>reference.map(r=>({id:r.id,time:r.observedTime,distance:Math.hypot(...columns.map((k,i)=>(q[k]-r[k])/scales[i]))}))
+        .sort((a,b)=>a.distance-b.distance||a.id-b.id).slice(0,p.k));
+      estimates=neighbors.map(ns=>mean(ns.map(r=>r.time)));
+    }
+    return {reference,masked,estimates,neighbors,baseline,
+      error:mae(masked,estimates,q=>q.time),baselineError:mae(masked,masked.map(()=>baseline),q=>q.time)};
+  }
+  if(method==='signal'){
+    const smoothed=signal.map((_,i)=>mean(signal.slice(Math.max(0,i-p.window+1),i+1).map(q=>q.value)));
+    const residual=signal.map((q,i)=>i>=p.window?q.value-smoothed[i-1]:null);
+    const reference=residual.slice(p.window,200).filter((_,i)=>!signal[i+p.window].spike);
+    const center=mean(reference),sigma=deviation(reference);
+    const flagged=signal.filter((q,i)=>residual[i]!==null && Math.abs(residual[i]-center)>p.z*sigma).map(q=>q.i);
+    const hits=flagged.filter(i=>signal[i].spike).length;
+    return {signal,smoothed,residual,center,sigma,flagged,hits,spikes:signal.filter(q=>q.spike).length};
+  }
+  if(method==='scale'){
+    const values=sensors.map((q,i)=>q.flow+(i>=320?38:0));
+    const train=values.slice(0,320),test=values.slice(320);
+    const fit=p.leak==='all'?values:train,low=Math.min(...fit),high=Math.max(...fit);
+    const transformed=values.map(x=>(x-low)/(high-low));
+    return {train,test,low,high,transformed,outside:transformed.slice(320).filter(x=>x<0||x>1).length,
+      categories:sensors.map(q=>[0,1,2].map(zone=>Number(q.zone===zone)))};
+  }
+  if(method==='pca'){
+    const points=sensors.map(q=>[q.flow,q.time]);
+    const center=[mean(points.map(q=>q[0])),mean(points.map(q=>q[1]))];
+    const units=[0,1].map(j=>p.units==='raw'?1:deviation(points.map(q=>q[j])));
+    const centered=points.map(q=>q.map((v,j)=>(v-center[j])/units[j]));
+    const cov=[0,1].map(i=>[0,1].map(j=>centered.reduce((s,q)=>s+q[i]*q[j],0)/(points.length-1)));
+    const theta=.5*Math.atan2(2*cov[0][1],cov[0][0]-cov[1][1]);
+    const angle=p.direction==='axis'?theta:p.angle*Math.PI/180;
+    const w=[Math.cos(angle),Math.sin(angle)];
+    const scores=centered.map(q=>q[0]*w[0]+q[1]*w[1]);
+    const reconstruction=scores.map(z=>w.map(v=>v*z));
+    const sse=centered.reduce((s,q,i)=>s+(q[0]-reconstruction[i][0])**2+(q[1]-reconstruction[i][1])**2,0);
+    const total=centered.reduce((s,q)=>s+q[0]**2+q[1]**2,0);
+    return {points,center,units,centered,cov,theta,angle,w,scores,reconstruction,sse,ratio:1-sse/total};
+  }
+  if(method==='gps')return {rows:gps,...cleanCase(gps,p.speed,p.gap)};
+  if(method==='interpolate'){
+    const gaps=[],estimates=[];
+    for(let i=1;i<observed.length;i++){
+      const start=observed[i-1],end=observed[i],interval=end.t-start.t;
+      if(interval<=10)continue;
+      const split=interval>p.gap;
+      gaps.push({start,end,interval,split});
+      if(split)continue;
+      for(let t=start.t+10;t<end.t;t+=10){
+        const alpha=(t-start.t)/interval,x=start.x+alpha*(end.x-start.x),y=start.y+alpha*(end.y-start.y);
+        const truth=trajectory[t/10];
+        estimates.push({t,x,y,error:Math.hypot(x-truth[0],y-truth[1])});
+      }
+    }
+    return {observed,gaps,estimates,unknown:trajectory.length-observed.length-estimates.length,
+      rmse:estimates.length?Math.sqrt(mean(estimates.map(q=>q.error**2))):null};
+  }
+  if(method==='matching'){
+    const emission=matching.map(q=>roadY.map(y=>((q.y-y)/22)**2));
+    // Road changes are allowed at two connectors; elsewhere a large cost penalizes switching.
+    const transition=(t,i,j)=>i===j?0:([12,23,33].includes(t)?p.transition*.3:p.transition);
+    const values=[emission[0].slice()],back=[[-1,-1,-1]];
+    for(let t=1;t<matching.length;t++){
+      const previous=values[t-1];
+      back.push(roadY.map((_,j)=>previous.map((v,i)=>v+transition(t,i,j)).reduce((best,v,i,a)=>v<a[best]?i:best,0)));
+      values.push(roadY.map((_,j)=>emission[t][j]+previous[back[t][j]]+transition(t,back[t][j],j)));
+    }
+    const last=values.at(-1),cost=Math.min(...last),path=[last.indexOf(cost)];
+    for(let t=matching.length-1;t>0;t--)path.unshift(back[t][path[0]]);
+    const nearest=emission.map(r=>r.indexOf(Math.min(...r)));
+    const score=route=>route.reduce((s,j,t)=>s+emission[t][j]+(t?transition(t,route[t-1],j):0),0);
+    const accuracy=route=>route.filter((j,i)=>j===matching[i].truth).length;
+    const disagreement=path.findIndex((j,t)=>j!==nearest[t]);
+    const example=disagreement<0?null:{
+      index:disagreement,
+      emissionSaving:emission[disagreement][path[disagreement]]-emission[disagreement][nearest[disagreement]],
+      extraTotal:score(path.map((j,t)=>t===disagreement?nearest[t]:j))-cost,
+    };
+    return {matching,roadY,values,back,path,nearest,cost,nearestCost:score(nearest),correct:accuracy(path),nearestCorrect:accuracy(nearest),example};
+  }
+  if(method==='rdp'){
+    const points=trajectory;
+    const distance=(q,a,b)=>{
+      const dx=b[0]-a[0],dy=b[1]-a[1],den=dx*dx+dy*dy;
+      const t=den?Math.max(0,Math.min(1,((q[0]-a[0])*dx+(q[1]-a[1])*dy)/den)):0;
+      return Math.hypot(q[0]-a[0]-t*dx,q[1]-a[1]-t*dy);
+    };
+    const indices=new Set([0,points.length-1]),stack=[[0,points.length-1]];
+    while(stack.length){
+      const [a,b]=stack.pop();let farthest=-1,max=p.epsilon;
+      for(let i=a+1;i<b;i++){const d=distance(points[i],points[a],points[b]);if(d>max){max=d;farthest=i}}
+      if(farthest>=0){indices.add(farthest);stack.push([a,farthest],[farthest,b])}
+    }
+    const keep=[...indices].sort((a,b)=>a-b);
+    let maxError=0;
+    for(let j=1;j<keep.length;j++)for(let i=keep[j-1]+1;i<keep[j];i++)maxError=Math.max(maxError,distance(points[i],points[keep[j-1]],points[keep[j]]));
+    return {points,keep,maxError};
+  }
+  const rows=CLEAN_REFERENCE.kept;
+  const buckets=new Map();
+  for(const row of rows){
+    const x=Math.floor(row.x/p.cell),y=Math.floor(row.y/p.cell),t=Math.floor(row.t/p.window),key=[x,y,t].join('/');
+    if(!buckets.has(key))buckets.set(key,{x,y,t,points:0,devices:new Set()});
+    const bucket=buckets.get(key);bucket.points++;bucket.devices.add(row.device);
+  }
+  const groups=[...buckets.values()].map(q=>({...q,devices:q.devices.size}));
+  return {rows,groups,maxTime:Math.max(...groups.map(g=>g.t))};
+}
+
+const CASE_INFO={
+  impute:['420条行程 · 分区缺失与极端值','全局均值和中位数填补可能抹掉分区差异。用预先遮盖的真实生成值计算误差。'],
+  knn:['420条行程 · 双特征近邻','比较流量与距离的尺度。用同一批遮盖记录比较KNN和全局中位数。'],
+  signal:['480个时刻 · 周期波动、尖峰与持续抬升','平滑与异常标记各自回答不同问题。标记阈值以首200时刻中的无注入尖峰残差为参考。'],
+  scale:['420条流量记录 · 测试期分布上移','比较训练集拟合与包含测试数据的泄漏对照。测试期落在训练范围外是有效信息。'],
+  pca:['420条行程 · 流量与用时','比较原尺度和标准化坐标下的第一主轴。解释方差与重构误差使用当前尺度。'],
+  gps:['24台设备 · 重复、跳点与断流','按设备和时间排序，比较当前点与上一保留点。已注入跳点标签只用于事后核验。'],
+  interpolate:['360个参考时刻 · 四种缺测长度','只在线性假设下补短缺口，长缺口保留为空。误差仅对本次补出的点计算。'],
+  matching:['42个GPS观测 · 三条平行道路','同一路不加转移代价，在三个设定的连接时刻降低换路代价。比较逐点最近道路与整段最小代价。'],
+  rdp:['360个采样点 · 弯道与扰动','同一轨迹上比较容差、保留点数和实测最大偏差。偏差按每个点所属的简化线段计算。'],
+  aggregate:['24台设备 · 多格网、多时间窗','固定使用复杂GPS案例中12 m/s、120 s规则的保留点。同一设备可出现在多个格网。'],
+};
+function plotAxes(points,xName,yName,{equal=false}={}){
+  const xs=points.map(q=>q[0]),ys=points.map(q=>q[1]);
+  const xmin=Math.min(...xs),ymin=Math.min(...ys),xmax=Math.max(...xs),ymax=Math.max(...ys);
+  const spanX=xmax-xmin||1,spanY=ymax-ymin||1;
+  const sx=equal?Math.min(714/spanX,258/spanY):714/spanX;
+  const sy=equal?sx:258/spanY;
+  const left=81+(714-spanX*sx)/2, bottom=313-(258-spanY*sy)/2;
+  const xy=([x,y])=>[left+(x-xmin)*sx,bottom-(y-ymin)*sy];
+  let frame='';
+  for(let i=0;i<=4;i++){
+    const t=i/4,x=xmin+t*spanX,y=ymin+t*spanY,[cx,cy]=xy([x,y]);
+    frame+=line(cx,bottom-spanY*sy,cx,bottom)+line(left,cy,left+spanX*sx,cy);
+    frame+=text(cx-14,bottom+21,f(x,1),'tiny')+text(Math.max(5,left-48),cy+4,f(y,1),'tiny');
+  }
+  frame+=text(82,38,yName,'tiny')+text(665,357,xName,'tiny');
+  return {xy,frame};
+}
+const series=(points,xy,color=C.a,width=3,dash='')=>`<polyline fill="none" stroke="${color}" stroke-width="${width}" stroke-dasharray="${dash}" points="${points.map(q=>xy(q).map(n=>n.toFixed(2)).join(',')).join(' ')}"/>`;
+const smallDot=(xy,q,color,r=3,opacity=.65)=>{const [x,y]=xy(q);return `<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${r}" fill="${color}" opacity="${opacity}"/>`};
+const fmtRate=(n,d)=>f(100*n/d,1)+'%';
+function complexPresentation(method,d,shown,p){
+  let body='',metrics=[],calc='',rows=[],headers=[];
+  if(method==='impute'||method==='knn'){
+    const observed=d.reference.map(q=>[q.flow,q.length]),masked=d.masked.map(q=>[q.flow,q.length]);
+    const pairs=d.masked.map((q,i)=>[q.time,d.estimates[i]]);
+    const bounds=pairs.flat(),lo=Math.min(...bounds),hi=Math.max(...bounds);
+    const chart=shown?plotAxes([[lo,lo],[hi,hi]],'遮盖前用时（分钟）','估计用时（分钟）',{equal:true}):plotAxes(observed.concat(masked),'流量（辆/时段）','路段长度（米）');
+    const {xy,frame}=chart;
+    body=frame+(shown?series([[lo,lo],[hi,hi]],xy,C.m,2,'5 5')+pairs.map(q=>smallDot(xy,q,C.a,4)).join(''):
+      observed.map(q=>smallDot(xy,q,C.b)).join('')+masked.map(q=>smallDot(xy,q,C.o,4)).join(''));
+    body+=text(80,20,shown?'绿点：各遮盖记录的估计　虚线：估计等于参考值':'蓝点：有效供体　橙点：待填补记录');
+    metrics=[['样本 / 遮盖',`420 / ${d.masked.length}`],['当前 MAE',shown?`${f(d.error,3)} 分钟`:'待计算'],['中位数基线 MAE',shown?`${f(d.baselineError,3)} 分钟`:'待计算']];
+    calc=shown?`在 ${d.masked.length} 条遮盖记录上取绝对误差的平均。参考用时只参与事后核验。首条记录估计 ${f(d.estimates[0])} 分钟，参考 ${f(d.masked[0].time)} 分钟。`:'估计使用未遮盖记录，观测中含极端用时。结果将显示估计与遮盖前用时的差异。';
+    headers=['记录','分区','流量','长度','估计用时','参考用时',...(method==='knn'?['邻居ID']:[])];
+    if(shown)rows=d.masked.map((q,i)=>[q.id,q.zone+1,f(q.flow),f(q.length),f(d.estimates[i]),f(q.time),...(method==='knn'?[d.neighbors[i].map(r=>r.id).join(', ')]:[])]);
+  }else if(method==='signal'){
+    const raw=d.signal.map(q=>[q.i,q.value]),{xy,frame}=plotAxes(raw,'时刻','观测值');
+    body=frame+series(raw,xy,C.b,1.5);
+    if(shown)body+=series(d.smoothed.map((y,i)=>[i,y]),xy,C.a,3)+d.flagged.map(i=>smallDot(xy,raw[i],C.r,4,1)).join('');
+    body+=text(80,20,shown?'蓝：观测　绿：后向均值　红：残差异常候选':'观测序列含周期波动、短时尖峰和持续变化');
+    metrics=[['时刻',d.signal.length],['标记候选',shown?d.flagged.length:'待计算'],['命中注入尖峰',shown?`${d.hits} / ${d.spikes}`:'待计算']];
+    calc=shown?`当前观测减去上一时刻的后向均值，得到残差。用参考残差的 μ=${f(d.center)}、σ=${f(d.sigma)} 计算Z分数。另有 ${d.flagged.length-d.hits} 个标记与注入尖峰不重合。`:'关注两个不同现象：短尖峰和持续抬升。改变窗口，比较平滑滞后与候选标记。';
+    headers=['时刻','观测','后向均值','残差','注入尖峰'];
+    if(shown)rows=d.flagged.map(i=>[i,f(d.signal[i].value),f(d.smoothed[i]),f(d.residual[i]),d.signal[i].spike?'是':'否']);
+  }else if(method==='scale'){
+    const ys=shown?d.transformed:d.train.concat(d.test),pts=ys.map((y,i)=>[i,y]);
+    const {xy,frame}=plotAxes(shown?pts.concat([[0,0],[0,1]]):pts,'记录序号',shown?'Min-Max 变换值':'流量');
+    body=frame+pts.map((q,i)=>smallDot(xy,q,i<320?C.b:C.o,3)).join('');
+    if(shown)body+=series([[0,1],[419,1]],xy,C.a,2,'6 5')+series([[0,0],[419,0]],xy,C.a,2,'6 5');
+    body+=text(80,20,'蓝：训练期 320条　橙：测试期 100条'+(shown?'　虚线：拟合范围边界':''));
+    metrics=[['训练 / 测试','320 / 100'],['拟合范围',shown?`${f(d.low,1)}–${f(d.high,1)}`:'待计算'],['测试越界',shown?`${d.outside} / 100`:'待计算']];
+    calc=shown?`使用 a=${f(d.low)}、b=${f(d.high)}。测试首条 ${f(d.test[0])} → ${f(d.transformed[320])}。三分区使用三列独热编码。`:'最后100条存在分布上移。先确定哪些记录可以参与拟合。';
+    headers=['测试记录','原流量','Min-Max值','分区编码'];
+    if(shown)rows=d.test.map((v,i)=>[321+i,f(v),f(d.transformed[320+i]),d.categories[320+i].join(' / ')]);
+  }else if(method==='pca'){
+    const points=shown?d.centered:d.points;
+    const {xy,frame}=plotAxes(shown?points.concat(d.reconstruction):points,shown?'中心化流量':'流量',shown?'中心化用时':'用时',{equal:shown});
+    body=frame+points.map((q,i)=>smallDot(xy,q,[C.b,C.o,C.a][CASES.sensors[i].zone],3,.65)).join('');
+    if(shown){
+      const low=Math.min(...d.scores),high=Math.max(...d.scores);
+      body+=series([d.w.map(v=>v*low),d.w.map(v=>v*high)],xy,C.m,2)+d.reconstruction.map(q=>smallDot(xy,q,C.ink??'var(--ink)',2.5,.4)).join('');
+      for(let i=0;i<points.length;i+=21)body+=series([points[i],d.reconstruction[i]],xy,C.m,1,'4 3');
+    }
+    body+=text(80,20,shown?'彩色：三分区样本　浅点：一维重构　虚线：抽样残差':'三分区样本 · 流量与用时使用各自物理单位');
+    metrics=[['样本 / 维度','420 / 2'],['保留方差',shown?fmtRate(d.ratio,1):'待计算'],['重构 SSE',shown?f(d.sse,2):'待计算']];
+    calc=shown?`w = (${d.w.map(v=>f(v,3)).join(', ')})，方向 ${f(d.angle*180/Math.PI,1)}°。投影 z = Xc w，重构 z wᵀ。标准化前后的SSE对应不同尺度。`:'先看原变量的相关性和尺度。结果页可对比数据求出的第一主轴与手动方向。';
+    headers=['记录','坐标（当前尺度）','投影','重构'];
+    if(shown)rows=d.centered.map((q,i)=>[i+1,num(q),f(d.scores[i]),num(d.reconstruction[i])]);
+  }else if(method==='gps'){
+    const all=d.rows.map(q=>[q.x,q.y]),{xy,frame}=plotAxes(all,'局部 x（m）','局部 y（m）',{equal:true});
+    body=frame;
+    if(shown){
+      const tracks=new Map();
+      for(const q of d.kept){const key=q.device+'/'+q.segment;if(!tracks.has(key))tracks.set(key,[]);tracks.get(key).push([q.x,q.y])}
+      body+=[...tracks.values()].map(q=>series(q,xy,C.a,1.7)).join('');
+      body+=d.rejected.map(q=>smallDot(xy,[q.x,q.y],C.r,3.8,1)).join('');
+    }else{
+      body+=d.rows.map(q=>smallDot(xy,[q.x,q.y],C.b,1.6,.43)).join('');
+    }
+    body+=text(80,20,shown?'绿：保留轨迹，分段处断开　红：速度或时间约束拒绝':'24台设备的原始观测 · 重复点可能互相覆盖');
+    metrics=[['输入点',d.rows.length],['重复 / 拒绝',shown?`${d.duplicates.length} / ${d.rejected.length}`:'待计算'],['保留点',shown?d.kept.length:'待计算']];
+    const hits=d.rejected.filter(q=>q.status==='注入跳点').length,total=d.rows.filter(q=>q.status==='注入跳点').length;
+    calc=shown?`速度阈值 ${p.speed} m/s，分段阈值 ${p.gap} s。识别 ${hits}/${total} 个注入跳点，另有 ${d.rejected.length-hits} 个拒绝点。其余轨迹保留原始米制坐标。`:'观察设备轨迹外的孤立点。速度规则对相邻观测关系敏感。';
+    headers=['来源ID','设备','时间 s','速度 m/s','处理','注入标签'];
+    if(shown)rows=[...d.rejected.map(q=>[q.id,q.device+1,q.t,f(q.velocity),'拒绝',q.status]),...d.duplicates.map(q=>[q.id,q.device+1,q.t,'—','重复',q.status])];
+  }else if(method==='interpolate'){
+    const asPoint=q=>[q.t,q.y],{xy,frame}=plotAxes(d.observed.map(asPoint),'时间（s）','局部 y（m）');
+    body=frame;
+    let segment=[];
+    for(const q of d.observed){if(segment.length&&q.t-segment.at(-1)[0]>10){body+=series(segment,xy,C.b,2);segment=[]}segment.push(asPoint(q))}
+    body+=series(segment,xy,C.b,2);
+    for(const g of d.gaps){
+      const a=xy(asPoint(g.start)),b=xy(asPoint(g.end));
+      body+=line(a[0],306,b[0],306,shown&&g.split?C.r:C.o,'5 4',4)+text((a[0]+b[0])/2-12,288,`${g.interval}s`,'tiny');
+      if(shown&&!g.split)body+=series([asPoint(g.start),asPoint(g.end)],xy,C.o,3,'5 4');
+    }
+    body+=text(80,20,shown?'蓝：观测　橙虚线：估计　红：保留缺口':'四个缺口 · 标注两端观测时间差');
+    metrics=[['观测 / 缺口',`${d.observed.length} / ${d.gaps.length}`],['补出 / 留空',shown?`${d.estimates.length} / ${d.unknown}`:'待计算'],['补出点 RMSE',shown&&d.rmse!==null?`${f(d.rmse,2)} m`:'—']];
+    calc=shown?`端点时间差 ≤ ${p.gap} s 的缺口允许插值。RMSE按补出的点计算，改变阈值也会改变误差的评价样本。`:'四个时间差各不相同。比较阈值改变时的覆盖范围与误差。';
+    headers=['起点 s','终点 s','间隔 s','操作'];
+    if(shown)rows=d.gaps.map(q=>[q.start.t,q.end.t,q.interval,q.split?'保留缺口':'线性插值']);
+  }else if(method==='matching'){
+    const pts=d.matching.map(q=>[q.x,q.y]),{xy,frame}=plotAxes(pts.concat(d.roadY.map(y=>[40,y])),'局部 x（m）','局部 y（m）');
+    body=frame+d.roadY.map(y=>series([[40,y],[778,y]],xy,C.m,1.5,'5 5')).join('')+pts.map(q=>smallDot(xy,q,C.b,3)).join('');
+    if(shown)body+=series(d.nearest.map((j,i)=>[d.matching[i].x,d.roadY[j]]),xy,C.o,2,'6 5')+series(d.path.map((j,i)=>[d.matching[i].x,d.roadY[j]]),xy,C.a,3);
+    body+=text(80,20,shown?'蓝点：GPS　橙虚线：逐点最近　绿实线：动态规划':'三条候选道路 · 蓝点为含横向噪声的GPS');
+    metrics=[['观测 × 候选','42 × 3'],['总代价 最近 / DP',shown?`${f(d.nearestCost,1)} / ${f(d.cost,1)}`:'待计算'],['命中参考道路 最近 / DP',shown?`${d.nearestCorrect} / ${d.correct}`:'待计算']];
+    calc=shown?`观测代价为 (横向偏差/22)²。非连接时刻换路代价为 ${p.transition}，连接时刻为其0.3倍。两条路径按同一代价计算。`:'本例用三条平行路和简化转移代价；参考道路标签用于核验路径，未参与推断。';
+    headers=['时刻','GPS y','最近道路','DP道路','参考道路','DP各路累计代价'];
+    if(shown)rows=d.matching.map((q,i)=>[i+1,f(q.y),d.nearest[i]+1,d.path[i]+1,q.truth+1,num(d.values[i])]);
+  }else if(method==='rdp'){
+    const {xy,frame}=plotAxes(d.points,'局部 x（m）','局部 y（m）',{equal:true});
+    body=frame+series(d.points,xy,C.b,shown?1.2:2);
+    if(shown)body+=series(d.keep.map(i=>d.points[i]),xy,C.a,3)+d.keep.map(i=>smallDot(xy,d.points[i],C.a,4,1)).join('');
+    body+=text(80,20,shown?'蓝：原始轨迹　绿：简化线与保留顶点':'原轨迹含多处弯道和小幅扰动 · 等比例坐标');
+    metrics=[['原点数',d.points.length],['保留点 / 压缩率',shown?`${d.keep.length} / ${fmtRate(d.points.length-d.keep.length,d.points.length)}`:'待计算'],['最大偏差',shown?`${f(d.maxError,2)} m`:'待计算']];
+    calc=shown?`逐段核对原点到简化线段的距离，最大为 ${f(d.maxError,3)} m，容差 ε=${p.epsilon} m。`:'弯道与噪声对容差敏感。调大容差比较采样压缩与几何误差。';
+    headers=['保留点','x（m）','y（m）'];
+    if(shown)rows=d.keep.map(i=>[i+1,...d.points[i].map(v=>f(v))]);
+  }else{
+    const window=Math.min(p.timeSlot,d.maxTime),groups=d.groups.filter(q=>q.t===window);
+    const pts=d.rows.map(q=>[q.x,q.y]);
+    const bounds=shown?pts.concat(groups.flatMap(q=>[[q.x*p.cell,q.y*p.cell],[(q.x+1)*p.cell,(q.y+1)*p.cell]])):pts;
+    const {xy,frame}=plotAxes(bounds,'局部 x（m）','局部 y（m）',{equal:true});
+    body=frame;
+    if(shown){
+      const max=Math.max(1,...groups.map(q=>q[p.count]));
+      for(const q of groups){
+        const [x,y]=xy([q.x*p.cell,(q.y+1)*p.cell]),[right,bottom]=xy([(q.x+1)*p.cell,q.y*p.cell]);
+        body+=rect(x+1,y+1,Math.max(1,right-x-2),Math.max(1,bottom-y-2),C.a,.15+.8*q[p.count]/max);
+        if(right-x>25)body+=text(x+5,y+16,q[p.count],'tiny','var(--ink)');
+      }
+    }else body+=pts.map(q=>smallDot(xy,q,C.b,1.6,.45)).join('');
+    body+=text(80,20,shown?`第 ${window+1} 窗 · 色深与格内数字表示${p.count==='points'?'点数':'设备数'}`:'清洗后轨迹点 · 所有时间窗');
+    metrics=[['全部保留点',d.rows.length],['格网 × 时间组',shown?d.groups.length:'待计算'],['当前窗点数',shown?groups.reduce((s,q)=>s+q.points,0):'待计算']];
+    calc=shown?`时间窗 [${window*p.window}, ${(window+1)*p.window}) s。格网边长 ${p.cell} m，同格同窗内设备去重。`:'缩放格网或时间窗口，观察密度和设备计数随分辨率变化。';
+    headers=['格网x','格网y','轨迹点数','去重设备数'];
+    if(shown)rows=groups.map(q=>[q.x,q.y,q.points,q.devices]);
+  }
+  return {body,metrics,calc,rows,headers};
+}
+
+/* Reading cues connect the classroom graphics to their underlying calculations. */
+const SIMPLE_READING={
+  impute:'横轴是记录编号，柱高是数值。前四柱是观测，第五柱是缺失项。切换均值和中位数，比较极端值100对两种填补的影响。',
+  knn:'横向位置代表A值，靠查询点越近的供体越优先。供体的B值在选完邻居后才用来求平均，因此B=40的记录即使数值醒目，也要先看它离查询点多远。',
+  signal:'从左到右是时间，灰线是观测，绿线是后向均值。峰值在平均时被附近较低的值稀释。图下的Z分数是独立小算例。',
+  scale:'上下两条数轴分别显示变换前后的值，连线把同一条记录的两个位置连起来。看橙色测试点是否落在训练区间的右侧。',
+  pca:'左图保留样本原来的二维坐标，重构点在选定轴上。虚线连接原样本与重构位置。右侧只保留沿这根轴的一个分数，多个样本可以得到同一分数。',
+  gps:'横纵轴是米制位置。处理结果中，连续保留点按设备与段号连线，红点表示规则拒绝，空心圈表示重复位置。颜色表示处理决定。',
+  interpolate:'两端蓝点是已有观测。橙点是按时间比例在端点间求得的位置；即使展示这个估计，分段规则仍可把长间隔保留为未知。',
+  matching:'从左到右是三个观测时刻，每列A/B是该时刻的候选状态。圆内是到该状态为止的累计最小代价，绿线是从末列向前回溯得到的整段选择。',
+  rdp:'灰线经过所有原点，绿线仅连接保留点。重点看被删点到对应绿线段的偏差是否超过容差。',
+  aggregate:'每根柱代表一个空间格网与时间窗的组合。点数是该组记录数，设备数按组去重，两个数回答的是不同问题。',
+};
+const COMPLEX_READING={
+  impute:[
+    '输入图横轴是流量，纵轴是路段长度。每点一条行程，橙点的用时已被遮盖，坐标仍可用于观察遮盖是否集中。',
+    '结果图改用同一单位比较用时。横轴是遮盖前的参考用时，纵轴是估计。虚线表示完全一致。全局填补给所有记录同一个估计，点自然排成一条水平线。',
+  ],
+  knn:[
+    '输入图用流量和路段长度显示可用于找邻居的两列。橙点缺少用时，蓝点有可用于填补的用时。标准化影响距离计算，图上的输入仍按原单位显示。',
+    '结果图每点对应一条被遮盖行程。横轴是预留的参考用时，纵轴是估计。点越贴近等值虚线，该条记录的估计误差越小。它与输入图是同一批记录的两种坐标。',
+  ],
+  signal:[
+    '横轴是时刻，纵轴是观测值。短尖峰迅速回落，约255时刻的持续抬升会延续。把两种变化放在一起，才能看到平滑和阈值的局限。',
+    '绿线显示窗口平均，红点标记相对上一时刻平滑值的较大偏离。持续抬升刚开始时也可能出现红点，等窗口适应新水平后偏离会缩小。',
+  ],
+  scale:[
+    '按记录顺序画流量，蓝点是训练期，橙点是刻意上移的测试期。这样可以先看到两个时期的取值范围。',
+    '保留记录顺序，把纵轴改成缩放值。虚线0和1对应拟合集的最小值和最大值。训练期拟合时，超过训练极值的测试点会落在虚线外。',
+  ],
+  pca:[
+    '横轴为流量，纵轴为用时，每点一条行程，颜色区分三个分区。散点斜着展开，说明两个变量共同变化。',
+    '结果图使用当前处理尺度。白色轴是降维方向，浅点是投影后在二维图上的重构。短虚线是部分样本丢掉的那一截。保留方差衡量点云沿所选方向展开的比例。',
+  ],
+  gps:[
+    '每点是一个GPS观测。原始图只画散点，因为直接连线容易把跳点和断流误画成行驶路径。精确重复点会重叠。',
+    '绿线只连接同一设备同一段里的保留点。红点是速度规则拒绝的观测。重复点单独计数，断流较长时即使后续点通过速度约束也会另起一段。',
+  ],
+  interpolate:[
+    '图上只画随时间变化的y坐标，计算同时处理x和y。缺口两端有观测，中间空白表示被遮盖的时刻。',
+    '橙虚线是允许补齐的缺口。超过阈值的缺口保持断开。改变阈值会同时改变补齐覆盖率和参加误差统计的样本。',
+  ],
+  matching:[
+    '蓝点是含定位噪声的观测，三条水平虚线是候选道路。某个点可能偶然更靠近另一条路，单看横向距离无法知道车辆是否换路。',
+    '两条路径从左到右对应同一串观测。橙虚线每次就近选择，可能来回跳路。绿线比较整段总代价。图中斜线表示前后时刻的候选变化，计算根据是否处在连接时刻计入不同的换路代价。',
+  ],
+  rdp:[
+    '这是等比例平面轨迹。蓝线保留所有采样点，弯道决定大尺度形状，小波动用来观察容差对保留点数的影响。',
+    '绿线是简化结果。蓝绿贴近说明几何形状近似。最大偏差按原点到所属简化线段计算，压缩率表示删掉的点占原点数的比例。',
+  ],
+  aggregate:[
+    '散点来自复杂GPS案例的清洗保留点，包含所有时间窗。单看点的密度无法区分设备更多，还是同一设备上报更频繁。',
+    '热图只显示选中的时间窗。每格的颜色深浅对应当前统计量，数字可用来精确比较。色深随当前窗重设，跨窗时应读数字。',
+  ],
+};
+
+function workedExample(method,d,p){
+  if(method==='impute'||method==='knn'){
+    const q=d.masked[0],estimate=d.estimates[0],error=Math.abs(estimate-q.time);
+    const source=method==='knn'
+      ?`用流量和路段长度找 ${d.neighbors[0].length} 个邻居。邻居用时为 ${d.neighbors[0].slice(0,7).map(r=>f(r.time)).join('、')}${d.neighbors[0].length>7?' 等':''} 分钟，平均后得到 ${f(estimate)} 分钟。`
+      :`对 ${d.reference.length} 条有效用时取${p.method==='mean'?'均值':'中位数'}，统一填入 ${f(estimate)} 分钟。`;
+    return `看记录 #${q.id}。${source} 揭开参考值 ${f(q.time)} 分钟后，本条绝对误差为 ${f(error)} 分钟。把 ${d.masked.length} 条误差平均，得到 ${f(d.error)} 分钟。中位数基线在同一批记录上得到 ${f(d.baselineError)} 分钟。`;
+  }
+  if(method==='signal'){
+    const i=255,r=d.residual[i],z=(r-d.center)/d.sigma;
+    return `持续抬升起点 t=${i}。观测 ${f(d.signal[i].value)} 减上一时刻平滑值 ${f(d.smoothed[i-1])}，残差约 ${f(r)}，标准化后 Z≈${f(z)}。${d.flagged.includes(i)?'该点超阈值，被标红。':'当前阈值下该点未标红。'} 全段 ${d.flagged.length} 个候选中，${d.hits} 个与注入尖峰重合。`;
+  }
+  if(method==='scale'){
+    return `首条测试记录为 ${f(d.test[0])}。代入拟合区间，(${f(d.test[0])}−${f(d.low)})÷(${f(d.high)}−${f(d.low)})≈${f(d.transformed[320])}。当前有 ${d.outside} 条测试记录落在 [0,1] 外。若把测试记录也拿来决定极值，越界数会降为0，这是拟合范围被改变的结果。`;
+  }
+  if(method==='pca'){
+    const percent=f(100*d.ratio,1);
+    return `第一条记录处理后的坐标是 (${d.centered[0].map(v=>f(v)).join(', ')})。沿当前轴只保存投影分数 ${f(d.scores[0])}，用它重构为 (${d.reconstruction[0].map(v=>f(v)).join(', ')})。全部 ${d.points.length} 条记录沿该方向保留 ${percent}% 方差，剩余偏差汇总为 SSE ${f(d.sse)}。`;
+  }
+  if(method==='gps'){
+    const q=d.rejected.find(r=>r.velocity!==null);
+    const previous=q&&d.kept.filter(r=>r.device===q.device&&r.t<q.t).at(-1);
+    const point=previous?`看 #${q.id}。距同设备上一保留点 #${previous.id} 约 ${f(Math.hypot(q.x-previous.x,q.y-previous.y))} 米，间隔 ${q.t-previous.t} 秒，速度约 ${f(q.velocity)} m/s，高于 ${p.speed} m/s，故标红。`:'当前可见的拒绝点没有可展示的有限速度算例。';
+    return `${point} 总数核对为 ${d.rows.length} = ${d.kept.length} 保留 + ${d.rejected.length} 拒绝 + ${d.duplicates.length} 重复。`;
+  }
+  if(method==='interpolate'){
+    const g=d.gaps.find(g=>!g.split)||d.gaps[0],sample=d.estimates.find(q=>q.t>g.start.t&&q.t<g.end.t);
+    const demo=sample?`缺口两端间隔 ${g.interval} 秒。首个待补时刻距起点 ${sample.t-g.start.t} 秒，时间比例约 ${f((sample.t-g.start.t)/g.interval,3)}，得到 y≈${f(sample.y)} 米。`:`首个缺口间隔 ${g.interval} 秒，超过阈值 ${p.gap} 秒，保留空白。`;
+    return `${demo} 这次补出 ${d.estimates.length} 个位置，仍留空 ${d.unknown} 个。RMSE 汇总的是已补出点与参考位置之间的距离误差。`;
+  }
+  if(method==='matching'){
+    const i=d.example?.index??-1;
+    const point=i>=0?`第 ${i+1} 个观测的 y≈${f(d.matching[i].y)} 米。逐点最近选道路 ${d.nearest[i]+1}，整段推断选道路 ${d.path[i]+1}。若只把这一点改选最近道路，定位代价少 ${f(d.example.emissionSaving)}，但计入前后换路后，总代价增加 ${f(d.example.extraTotal)}。`:'当前参数下，两种方法的道路选择一致。';
+    return `${point} 两条序列按同一规则累加定位偏差与换路代价，分别为 ${f(d.nearestCost)} 和 ${f(d.cost)}。按生成数据时保留的道路标签核对，分别命中 ${d.nearestCorrect} 和 ${d.correct} 个观测。`;
+  }
+  if(method==='rdp'){
+    return `容差 ${p.epsilon} 米时，${d.points.length} 个点保留 ${d.keep.length} 个。删点比例为 (${d.points.length}−${d.keep.length})÷${d.points.length}≈${fmtRate(d.points.length-d.keep.length,d.points.length)}。逐段复核的最大偏差约 ${f(d.maxError)} 米，未超过容差。`;
+  }
+  const window=Math.min(p.timeSlot,d.maxTime),groups=d.groups.filter(q=>q.t===window);
+  const g=groups.reduce((best,q)=>!best||q.points-q.devices>best.points-best.devices?q:best,null);
+  if(!g)return '当前时间窗没有保留点。可切换时间窗查看有数据的格网。';
+  return `看第 ${window+1} 个时间窗的格网 (${g.x}, ${g.y})。它收到 ${g.points} 条记录，来自 ${g.devices} 台不同设备。切换统计量后，同一个格子的数字会在这两个值之间切换。`;
+}
+
+const CASE_DEFAULTS={
+  impute:{method:'median'},knn:{k:7,units:'scaled'},signal:{window:9,z:3},
+  scale:{leak:'train'},pca:{units:'scaled',direction:'axis',angle:0},
+  gps:{speed:DATA.speed,gap:DATA.gap},interpolate:{gap:150},
+  matching:{transition:8},rdp:{epsilon:8},aggregate:{cell:250,window:180,count:'points',timeSlot:0},
+};
+const CASE_THEORY={
+  impute:['均值 / 中位数由有效供体估计。','x̂ = mean(X<sub>obs</sub>) 或 median(X<sub>obs</sub>)','比较全局统计量对有分区缺失和极端值的数据的影响。'],
+  knn:['使用流量与路段长度在有效记录中搜索K个近邻。','d(q,r) = √Σ<sub>j</sub>[(q<sub>j</sub>−r<sub>j</sub>)/σ<sub>j</sub>]²<br>x̂ = Σ<sub>r∈N</sub> x<sub>r</sub> / K','σ来自未遮盖供体；原始单位模式将σ设为1。K和值域会改变邻居。'],
+  signal:['后向均值使用当前及之前的观测。异常判断使用当前值对上一时刻平滑值的残差。','m<sub>t</sub> = mean(x<sub>t−w+1:t</sub>)<br>r<sub>t</sub> = x<sub>t</sub> − m<sub>t−1</sub><br>|r<sub>t</sub>−μ| / σ &gt; τ','起始窗口使用已有值。参考残差用无注入尖峰的前200时刻校准。'],
+  scale:['缩放极值由所选拟合集确定。类别按三个分区做独热表示。','x′ = (x−min<sub>fit</sub>)/(max<sub>fit</sub>−min<sub>fit</sub>)','测试期上移。允许变换结果超出[0,1]；泄漏对照用全部记录拟合。'],
+  pca:['对中心化或标准化后的二维数据求协方差，比较一维重构。','S = X<sub>c</sub>ᵀ X<sub>c</sub>/(n−1)<br>z = X<sub>c</sub>w，X̂<sub>c</sub> = zwᵀ','第一主轴由当前数据求得。手动方向用于比较；误差和占比在当前尺度上解释。'],
+  gps:['以对象、时间、坐标去重，使用同设备上一保留点进行速度约束和分段。','v = ‖s<sub>t</sub>−s<sub>prev</sub>‖₂ / Δt<br>Δt &gt; G → 新段','位置使用局部米制坐标；跳点标签只用于事后核验。'],
+  interpolate:['在允许补齐的短缺口里，以固定10秒间隔估计坐标。','α = (t−t<sub>a</sub>)/(t<sub>b</sub>−t<sub>a</sub>)<br>ŝ = (1−α)s<sub>a</sub> + αs<sub>b</sub>','时间差超过阈值时保留缺口。误差仅覆盖已补出的点，参考轨迹为合成真值。'],
+  matching:['在每一时刻的三个候选道路中，找观测和转移总代价最低的整段序列。','V<sub>t</sub>(j) = E<sub>t</sub>(j) + min<sub>i</sub>[V<sub>t−1</sub>(i)+C<sub>t</sub>(i,j)]','平行道路和连接时刻为教学设定，转移是代价规则。'],
+  rdp:['递归寻找离当前端点线段最远的中间点。超出容差时保留该点并分裂。','d<sub>max</sub> = max<sub>i</sub> d(p<sub>i</sub>,[p<sub>a</sub>,p<sub>b</sub>])<br>d<sub>max</sub> &gt; ε → 分裂','等比例空间坐标。几何容差不约束速度与停留语义。'],
+  aggregate:['按空间格网和左闭右开时间窗分组。','g = (⌊x/L⌋, ⌊y/L⌋, ⌊t/W⌋)<br>设备数 = |{设备 ID : 记录 ∈ g}|','色深按当前时间窗归一化。设备在同格同窗去重。'],
+};
+let classroomCase='simple',detailMode=false,classroomPhase=0;
+let cachedKey='',cachedCase;
+const basePaint=paint,baseSelect=selectLab,baseSetParam=setParam,baseControls=controls;
+const baseAdvance=advance,baseGoStep=goStep,basePlay=play,baseReset=reset;
+function selectedDefaults(i){
+  return classroomCase==='complex'&&!detailMode?CASE_DEFAULTS[TRACE_METHODS[i]]:LABS[i].defaults;
+}
+function getComplex(){
+  const method=TRACE_METHODS[active],key=JSON.stringify([method,p]);
+  if(key!==cachedKey){cachedCase=complexCase(method,p);cachedKey=key}
+  return cachedCase;
+}
+controls=function(){
+  if(classroomCase==='simple'||detailMode){baseControls();return}
+  const units=()=>choose('units','特征尺度',[['scaled','标准化'],['raw','原始单位']]);
+  const perCase={
+    impute:()=>baseControls(),
+    knn:()=>range('k','邻居数量 K',1,31,1)+units(),
+    signal:()=>range('window','后向窗口',2,40,1)+range('z','异常阈值 τ',1,6,.1),
+    scale:()=>baseControls(),
+    pca:()=>units()+choose('direction','投影方向',[['axis','数据第一主轴'],['manual','手动比较']])+
+      (p.direction==='manual'?range('angle','方向 θ（度）',-90,90,1):''),
+    gps:()=>baseControls(),
+    interpolate:()=>range('gap','允许插值的最大端点间隔 s',60,480,10),
+    matching:()=>range('transition','非连接处换路代价',0,20,1),
+    rdp:()=>range('epsilon','几何容差 ε / m',.5,30,.5),
+    aggregate:()=>range('cell','格网边长 m',50,500,50)+range('window','时间窗口 s',60,600,60)+
+      choose('count','统计对象',[['points','轨迹点'],['devices','去重设备']])+
+      range('timeSlot','时间窗编号（从0起）',0,getComplex().maxTime,1),
+  };
+  const html=perCase[TRACE_METHODS[active]]();
+  if(html!==undefined)$('controls').innerHTML=html;
+};
+function simplePresentation(method,trace,shown){
+  const e=trace.events[shown?trace.events.length-1:0],a=accumulated(shown?trace.events:[e]);
+  const outputs={
+    impute:()=>['填补值',num(trace.result.estimate)],
+    knn:()=>['邻居填补估计',num(trace.result.estimate)],
+    signal:()=>['尖峰处平滑值',num(trace.result.smoothed[5])],
+    scale:()=>['测试 Min-Max',num(trace.result.scaled.at(-1))],
+    pca:()=>['方差保留',fmtRate(trace.result.ratio,1)],
+    gps:()=>['保留 / 拒绝 / 重复',[trace.result.kept.length,trace.result.rejected.length,trace.result.duplicates.length].join(' / ')],
+    interpolate:()=>['估计坐标',num(trace.result.estimate)],
+    matching:()=>['最优路径 / 代价',trace.result.path.map(i=>i?'B':'A').join('')+' / '+trace.result.cost],
+    rdp:()=>['保留点数',trace.result.keep.length],
+    aggregate:()=>['格网 × 时间组',trace.result.groups.length],
+  };
+  return {body:plotTrace(method,e,a),metrics:[['数据','课件算例'],shown?outputs[method]():['结果','待展示']],
+    calc:explanation(method,e,a),table:shown?stateTable(method,e,a):'',data:shown?trace.result:e.state};
+}
+function paintClassroom(){
+  const lab=LABS[active],method=TRACE_METHODS[active],complex=classroomCase==='complex',shown=classroomPhase===1;
+  let graph;
+  if(complex){
+    const data=getComplex();
+    graph=complexPresentation(method,data,shown,p);
+    if(shown)graph.calc=workedExample(method,data,p);
+    graph.data=shown?data:{seed:20261106,scenario:CASE_INFO[method][0]};
+    graph.table=shown&&graph.rows.length?traceTable(graph.headers,graph.rows.slice(0,160).map(row=>row.map(esc))):'';
+    if(graph.rows.length>160)graph.table+='<p class="hint">表格显示前160条。导出可查看完整计算结果。</p>';
+  }else graph=simplePresentation(method,traceData(),shown);
+  $('stage').innerHTML=svg(graph.body);
+  $('metrics').innerHTML=graph.metrics.map(([k,v])=>`<div class="metric"><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('');
+  $('case-note').textContent=complex?CASE_INFO[method][0]+'。'+CASE_INFO[method][1]:'使用课件中的小样本验证方法。切换复杂实例可观察同一方法在更大样本或更复杂条件下的结果。';
+  $('reading-label').hidden=false;
+  $('reading-guide').hidden=false;
+  $('reading-guide').textContent=complex?COMPLEX_READING[method][Number(shown)]:SIMPLE_READING[method];
+  $('calculation').textContent=graph.calc;
+  $('explanation').textContent=shown?'调整参数可直接比较处理结果，展开下方表格可查看记录。':'先观察数据，选定参数，再展示处理结果。';
+  $('stepTitle').textContent=shown?'处理结果':'观察输入';
+  $('stepNum').textContent=shown?'02':'01';
+  $('stepLabel').textContent=shown?'2 / 2':'1 / 2';
+  $('show-input').setAttribute('aria-pressed',String(!shown));
+  $('show-result').setAttribute('aria-pressed',String(shown));
+  $('case-simple').setAttribute('aria-pressed',String(!complex));
+  $('case-complex').setAttribute('aria-pressed',String(complex));
+  $('trace-panel').hidden=true;
+  $('case-results').hidden=!graph.table;
+  $('case-table').innerHTML=graph.table;
+  const theory=complex?CASE_THEORY[method]:[lab.definition,lab.formula,lab.boundary];
+  $('definition').textContent=theory[0];
+  $('formula').innerHTML=theory[1];
+  $('symbols').textContent=complex?'详见当前演算和结果表。':lab.symbols;
+  $('boundary').textContent=theory[2];
+  result={lab:lab.short,method,case:classroomCase,parameters:{...p},phase:shown?'result':'input',
+    ...(complex?{seed:20261106}:{}),[shown?'result':'input']:graph.data};
+  $('data').textContent=JSON.stringify(result,null,2);
+}
+paint=function(){if(detailMode)basePaint();else paintClassroom()};
+selectLab=function(i){classroomPhase=0;baseSelect(i)};
+setParam=function(key,value){
+  if(detailMode){baseSetParam(key,value);return}
+  p[key]=typeof p[key]==='number'?Number(value):value;
+  if(classroomCase==='complex'&&TRACE_METHODS[active]==='aggregate'&&key==='window')p.timeSlot=Math.min(p.timeSlot,getComplex().maxTime);
+  if(key==='direction'||(TRACE_METHODS[active]==='aggregate'&&key==='window'))controls();
+  else if($('out-'+key))$('out-'+key).textContent=p[key];
+  paint();
+};
+goStep=function(i){if(detailMode)baseGoStep(i);else showPhase(i)};
+advance=function(d){if(detailMode)baseAdvance(d);else showPhase(classroomPhase+d)};
+play=function(){if(detailMode)basePlay();else showPhase(1-classroomPhase)};
+reset=function(){if(detailMode){baseReset();return}classroomPhase=0;p={...selectedDefaults(active)};controls();paint()};
+function showPhase(i){classroomPhase=Math.max(0,Math.min(1,i));paint()}
+function setCase(which){
+  if(detailMode||which===classroomCase)return;
+  classroomCase=which;
+  p={...selectedDefaults(active)};
+  controls();
+  paint();
+}
+function toggleDetails(){
+  stop();
+  detailMode=!detailMode;
+  classroomCase='simple';
+  classroomPhase=0;
+  document.body.classList.toggle('classroom',!detailMode);
+  $('case-results').hidden=true;
+  $('reading-label').hidden=detailMode;
+  $('reading-guide').hidden=detailMode;
+  processView=detailMode;
+  arrangeTrace();
+  $('view-mode').textContent=detailMode?'返回课堂演示':'展开简单用例逐步演算';
+  baseSelect(active);
+}
+processView=false;
+document.body.classList.add('classroom');
+arrangeTrace();
+window.classroomDefaults=selectedDefaults;
+$('view-mode').textContent='展开简单用例逐步演算';
+selectLab(0);
+</script></body></html>
