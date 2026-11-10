@@ -1,6 +1,6 @@
 {
   "course": "时空数据分析与挖掘",
-  "updated": "2026-11-06",
+  "updated": "2026-11-10",
   "lectures": [
     {
       "number": 1,
@@ -29,7 +29,14 @@
     {
       "number": 3,
       "title": "时空关联规则挖掘",
-      "status": "pending"
+      "status": "published",
+      "page": "lectures/03/index.html",
+      "slides": "lectures/03/slides.pdf",
+      "slides_version": "v11 早高峰交通案例学生公开版",
+      "demo": "lectures/03/demo/index.html",
+      "demo_title": "交通数据四算法演示",
+      "lab": "lectures/03/lab.zip",
+      "slides_pages": 79
     },
     {
       "number": 4,

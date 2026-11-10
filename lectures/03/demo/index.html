@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第三讲｜交通数据四算法演示</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="data.js"></script>
+<script defer src="algorithms.js"></script>
+<script defer src="demo.js"></script>
+</head>
+<body>
+<header class="masthead">
+  <div class="shell">
+    <p class="eyebrow">时空数据分析与挖掘 · 第三讲 · 统一交通算例</p>
+    <h1>一张交通表，四种算法</h1>
+    <p class="intro">先看原始记录，再一步步填表、接事件和判断剪枝。</p>
+    <p id="dataset-summary" class="dataset">教学构造数据</p>
+  </div>
+</header>
+<main class="shell">
+  <nav id="methods" aria-label="选择算法"></nav>
+  <section id="lab" aria-labelledby="lab-title">
+    <div class="lab-head">
+      <div><h2 id="lab-title"></h2><p id="lab-subtitle"></p></div>
+      <div class="step-status" id="step-status" aria-live="polite"></div>
+    </div>
+    <div id="milestones" class="milestones" aria-label="跳到阶段"></div>
+    <div class="layout">
+      <div id="visual" class="visual"></div>
+      <aside class="guide" aria-labelledby="step-title">
+        <p class="eyebrow">本步提示</p>
+        <h3 id="step-title"></h3>
+        <p id="step-explain"></p>
+        <div id="step-calc" class="calc"></div>
+        <p id="question" class="teaching-question"></p>
+        <details id="prompt"><summary>查看参考回答</summary><p id="answer"></p></details>
+      </aside>
+    </div>
+    <div class="actions" aria-label="逐步控制">
+      <button type="button" id="restart">回到第 1 步</button>
+      <div>
+        <button type="button" id="previous">← 上一步</button>
+        <button type="button" id="next" class="primary">下一步 →</button>
+      </div>
+    </div>
+  </section>
+  <details id="raw" class="raw">
+    <summary>查看同一份交通原表与提取出的事件</summary>
+    <div id="raw-days" class="milestones" aria-label="查看日期"></div>
+    <div id="raw-data"></div>
+  </details>
+  <footer>第三讲配套实验 · 5 分钟车辆计数 · 教学构造数据</footer>
+</main>
+</body>
+</html>
