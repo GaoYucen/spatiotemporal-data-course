@@ -40,17 +40,17 @@
     },
     {
       "number": 4,
-      "title": "时空聚类算法",
+      "title": "预测模型基础",
       "status": "pending"
     },
     {
       "number": 5,
-      "title": "时空异常检测",
+      "title": "时空聚类算法",
       "status": "pending"
     },
     {
       "number": 6,
-      "title": "预测模型基础",
+      "title": "时空异常检测",
       "status": "pending"
     },
     {
