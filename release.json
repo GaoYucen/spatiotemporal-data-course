@@ -1,6 +1,6 @@
 {
   "course": "时空数据分析与挖掘",
-  "updated": "2026-11-10",
+  "updated": "2026-11-17",
   "lectures": [
     {
       "number": 1,
@@ -102,6 +102,18 @@
       "number": 16,
       "title": "前沿技术与课程总结",
       "status": "pending"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "traffic-prediction",
+      "title": "交通状态预测与方法探索",
+      "status": "published",
+      "published": "2026-11-17",
+      "page": "assignments/traffic-prediction/index.html",
+      "package": "assignments/traffic-prediction/student-package.zip",
+      "task": "assignments/traffic-prediction/assignment.txt",
+      "dataset_version": "METR-LA-course-20-201203-v2"
     }
   ]
 }
